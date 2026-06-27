@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.playwright-cli/
+.pytest_cache/
+.coverage
+htmlcov/
+tmp/
+dist/
+build/
+.worktrees/
+outputs/**/*.png
+outputs/playwright/

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hermes P7 Product Thinking"
+  short_description: "AI PM case training with P7+ reasoning"
+  default_prompt: "Use $hermes-p7-product-thinking to turn today's AI/product signals into a P7+ product thinking training session."
