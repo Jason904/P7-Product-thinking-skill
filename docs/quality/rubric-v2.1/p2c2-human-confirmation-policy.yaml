@@ -1,0 +1,26 @@
+stage: P2C-2
+policy_name: human confirmation release candidate gate
+gate_type: human_confirmation_gate
+formal_publish_allowed: false
+human_confirmation_required: true
+release_candidate_is_not_publish: true
+manual_publish_review_required_after_release_candidate: true
+not_formal_publish: true
+public_site_updated: false
+user_notification_sent: false
+live_llm_review: false
+blocked_conditions:
+  - OBSERVATION_BLOCKED
+  - OBSERVATION_INCOMPLETE
+  - HUMAN_CONFIRMATION_MISSING
+  - FORMAL_PUBLISH_ALREADY_ALLOWED
+  - PUBLIC_SITE_ALREADY_UPDATED
+  - USER_NOTIFICATION_ALREADY_SENT
+  - LIVE_LLM_REVIEW_USED
+ready_condition:
+  source_observation_status: OBSERVATION_READY
+  human_confirmed: true
+  release_candidate_created: true
+  eligible_for_manual_publish_review: true
+  formal_publish_allowed: false
+  requires_manual_publish_step: true
