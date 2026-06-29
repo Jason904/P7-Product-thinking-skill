@@ -1,0 +1,37 @@
+stage: P2C-3
+policy_name: manual publish review dry-run gate
+gate_type: manual_publish_review_dry_run
+formal_publish_allowed: false
+manual_publish_review_ready_is_not_publish: true
+requires_final_human_publish_confirmation: true
+not_formal_publish: true
+public_site_updated: false
+user_notification_sent: false
+live_llm_review: false
+automatic_publishing: false
+blocked_conditions:
+  - RELEASE_CANDIDATE_PACKAGE_MISSING
+  - RELEASE_CANDIDATE_MANIFEST_MISSING
+  - SOURCE_OBSERVATION_LEDGER_MISSING
+  - HUMAN_CONFIRMATION_DECISION_MISSING
+  - MANUAL_PUBLISH_CHECKLIST_MISSING
+  - RELEASE_CANDIDATE_BLOCKED
+  - RELEASE_CANDIDATE_NOT_CREATED
+  - RELEASE_CANDIDATE_IS_PUBLISH
+  - MANUAL_PUBLISH_REVIEW_NOT_REQUIRED
+  - FORMAL_PUBLISH_ALREADY_ALLOWED
+  - PUBLIC_SITE_ALREADY_UPDATED
+  - USER_NOTIFICATION_ALREADY_SENT
+  - LIVE_LLM_REVIEW_USED
+  - AUTOMATIC_PUBLISHING_ENABLED
+ready_condition:
+  release_candidate_created: true
+  release_candidate_is_not_publish: true
+  formal_publish_allowed: false
+  public_site_updated: false
+  user_notification_sent: false
+  live_llm_review: false
+  automatic_publishing: false
+  manual_publish_review_required_after_release_candidate: true
+  manual_publish_review_checklist_exists: true
+  manual_publish_review_ready: true
