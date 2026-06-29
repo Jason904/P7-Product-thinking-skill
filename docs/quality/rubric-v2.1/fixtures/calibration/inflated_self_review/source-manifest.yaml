@@ -1,0 +1,17 @@
+sample_id: inflated_self_review
+sample_type: synthetic
+synthetic_fixture: true
+not_real_sample_replay: true
+source_markdown: null
+source_html: null
+source_records: []
+expected_decision:
+- FAIL_DAILY
+- PUBLISH_BLOCK
+expected_publish_allowed: false
+expected_failure_types:
+- SELF_REVIEW_INFLATION
+- REVIEW_EVIDENCE_INVALID
+expected_caps: {}
+created_from: Synthetic negative fixture for self-review inflation.
+notes: synthetic_fixture=true; not_real_sample_replay=true.

@@ -1,0 +1,35 @@
+sample_id: v7_failure
+validator_status: FAIL
+reviewer_errors:
+- case_reviews[1].item_reviews[2].final_score exceeds active item cap 0
+- case_reviews[1].item_reviews[2].final_score exceeds MISSING evidence cap 0
+- case_reviews[1].item_reviews[2].final_score must be 0 when item_evidence_sufficiency=MISSING
+claim_evidence_map_errors: []
+failure_object_errors: []
+daily_decision: FAIL_DAILY
+publish_allowed: false
+failure_types:
+- EMPTY_8Q_REASONING
+- DISCONNECTED_8Q_CHAIN
+- BOILERPLATE_REASONING
+- CASE_DEPTH_IMBALANCE
+- REVIEW_EVIDENCE_INVALID
+failure_categories:
+  content_quality_failure: true
+  html_rendering_integrity_failure: false
+  source_evidence_failure: false
+  self_review_inflation: false
+golden_comparison:
+  fixture_dir: docs/quality/rubric-v2.1/fixtures/calibration/v7_failure
+  daily_decision: FAIL_DAILY
+  expected_daily_decision:
+  - FAIL_DAILY
+  - PUBLISH_BLOCK
+  daily_decision_matches_expected: true
+  publish_allowed: false
+  expected_publish_allowed: false
+  publish_allowed_matches_expected: true
+  case_decisions_match_recorded_fixture: true
+  s_level_items_match_recorded_fixture: true
+  failure_types_match_expected: true
+  caps_applied_match_recorded_fixture: true

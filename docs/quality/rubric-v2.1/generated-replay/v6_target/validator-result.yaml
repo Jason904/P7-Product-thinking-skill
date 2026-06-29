@@ -1,0 +1,25 @@
+sample_id: v6_target
+validator_status: PASS
+reviewer_errors: []
+claim_evidence_map_errors: []
+failure_object_errors: []
+daily_decision: PASS
+publish_allowed: true
+failure_types: []
+failure_categories:
+  content_quality_failure: false
+  html_rendering_integrity_failure: false
+  source_evidence_failure: false
+  self_review_inflation: false
+golden_comparison:
+  fixture_dir: docs/quality/rubric-v2.1/fixtures/calibration/v6_target
+  daily_decision: PASS
+  expected_daily_decision: PASS
+  daily_decision_matches_expected: true
+  publish_allowed: true
+  expected_publish_allowed: true
+  publish_allowed_matches_expected: true
+  case_decisions_match_recorded_fixture: true
+  s_level_items_match_recorded_fixture: true
+  failure_types_match_expected: true
+  caps_applied_match_recorded_fixture: true

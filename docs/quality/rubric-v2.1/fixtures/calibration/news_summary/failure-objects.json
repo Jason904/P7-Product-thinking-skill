@@ -1,0 +1,32 @@
+[
+  {
+    "failure_type": "NEWS_SUMMARY_ONLY",
+    "decision_state": "FAIL_DAILY",
+    "publish_allowed": false,
+    "repair_action": "rewrite_case_background",
+    "retry_budget": {
+      "max_retries_per_gate": 2,
+      "current_retry_count": 0,
+      "retry_allowed": true
+    },
+    "content_repair_required": true,
+    "content_repair_target": "rewrite_case_background",
+    "system_repair_required": true,
+    "system_repair_target": [
+      "reviewer_prompt",
+      "calibration_set"
+    ],
+    "regression_sample_required": true,
+    "content_changed": true,
+    "html_stale": true,
+    "must_rerender_html": true,
+    "must_rerun_gates": [
+      "G5",
+      "G6",
+      "G7",
+      "G8"
+    ],
+    "evidence": "Calibration replay expected failure: NEWS_SUMMARY_ONLY",
+    "repair_notes": "Generated for calibration replay validation."
+  }
+]

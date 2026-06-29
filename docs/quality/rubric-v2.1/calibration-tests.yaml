@@ -1,0 +1,127 @@
+version: "2.1"
+purpose: "Expected assertions for Rubric v2.1 calibration fixtures."
+
+fixture_classes:
+  hard_fail:
+    expected_decision:
+      - FAIL_DAILY
+      - PUBLISH_BLOCK
+  soft_repair:
+    expected_decision:
+      - REVIEW
+      - REWRITE_MODULE
+      - PASS_WITH_MINOR_REPAIR
+  good_pass:
+    expected_decision:
+      - PASS
+  human_preference:
+    expected_decision:
+      - USER_REVIEW_REQUIRED
+
+fixtures:
+  v7_failure_sample:
+    class: hard_fail
+    source_role: "Known regression sample: empty 8-question shell and visible quality retreat."
+    expected_decision:
+      - FAIL_DAILY
+      - PUBLISH_BLOCK
+    must_include_failure_type:
+      - EMPTY_8Q_REASONING
+      - DISCONNECTED_8Q_CHAIN
+      - BOILERPLATE_REASONING
+    must_not_publish: true
+
+  empty_8q_shell_sample:
+    class: hard_fail
+    source_role: "8问 only has headings/cards but no reasoning fields."
+    expected_decision:
+      - FAIL_DAILY
+      - PUBLISH_BLOCK
+    must_include_failure_type:
+      - EMPTY_8Q_REASONING
+      - INCOMPLETE_8Q_FIELDS
+    must_fail_gate:
+      - G3
+      - G5
+      - G6
+    must_not_publish: true
+
+  news_summary_sample:
+    class: hard_fail
+    source_role: "Looks like a news recap rather than P7+ deliberate practice."
+    expected_decision:
+      - FAIL_DAILY
+    expected_global_cap: 70
+    max_total_score: 70
+    must_include_failure_type:
+      - NEWS_SUMMARY_ONLY
+    must_not_decision:
+      - PASS
+    must_not_publish: true
+
+  inflated_self_review_sample:
+    class: hard_fail
+    source_role: "Generated draft gives itself high Insight score but independent evidence is weak."
+    expected_decision:
+      - FAIL_DAILY
+      - PUBLISH_BLOCK
+    must_include_failure_type:
+      - SELF_REVIEW_INFLATION
+      - REVIEW_EVIDENCE_INVALID
+    must_not_publish: true
+
+  soft_method_repair_sample:
+    class: soft_repair
+    source_role: "Case is mostly valid but analysis method workbench explains too little."
+    expected_decision:
+      - REVIEW
+      - REWRITE_MODULE
+    must_include_failure_type:
+      - METHOD_NO_INSIGHT
+    publish_allowed_before_repair: false
+    retry_allowed: true
+
+  minor_expression_repair_sample:
+    class: soft_repair
+    source_role: "Reasoning is strong; PREP wording needs minor polish."
+    expected_decision:
+      - PASS_WITH_MINOR_REPAIR
+    forbidden:
+      - S_level_failure
+      - publish_block
+      - evidence_insufficient
+    allowed_minor_repairs: "<=2"
+
+  v3_target_sample:
+    class: good_pass
+    source_role: "Target-quality sample for deep content, reasoning, and expression."
+    expected_decision: "PASS"
+    min_total_score: 85
+    allowed_minor_repairs: "<=2"
+    s_level_failures: 0
+    must_include_positive_evidence: true
+    must_include_why_pass: true
+    forbidden:
+      - S_level_failure
+      - publish_block
+      - evidence_insufficient
+
+  v6_target_sample:
+    class: good_pass
+    source_role: "Target-quality sample for HTML reader plus content completeness."
+    expected_decision: "PASS"
+    min_total_score: 85
+    allowed_minor_repairs: "<=2"
+    s_level_failures: 0
+    must_include_positive_evidence: true
+    forbidden:
+      - S_level_failure
+      - publish_block
+      - html_content_loss
+
+  human_preference_sample:
+    class: human_preference
+    source_role: "Judgment depends on user's career asset preference rather than objective content validity."
+    expected_decision:
+      - USER_REVIEW_REQUIRED
+    must_not_publish_without_user: true

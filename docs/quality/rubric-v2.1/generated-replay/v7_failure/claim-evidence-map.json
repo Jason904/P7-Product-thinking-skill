@@ -1,0 +1,83 @@
+{
+  "case_a": {
+    "case_id": "case_a",
+    "claims": [
+      {
+        "claim_id": "v7_failure_case_a_core_claim_01",
+        "claim_text": "v7_failure case_a 的核心判断由可追溯训练稿事实支撑。",
+        "claim_type": "core_judgment",
+        "supporting_facts": [
+          {
+            "fact": "v7_failure 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+            "source": {
+              "title": "v7_failure historical training artifact",
+              "url": "file://outputs/daily-training/v7_failure",
+              "source_type": "official_doc",
+              "published_at": "2026-06-25",
+              "accessed_at": "2026-06-28",
+              "fact_confidence": "A"
+            },
+            "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+          }
+        ],
+        "support_level": "SUFFICIENT",
+        "unsupported_parts": [],
+        "decision_impact": "supports core_judgment"
+      }
+    ]
+  },
+  "case_b": {
+    "case_id": "case_b",
+    "claims": [
+      {
+        "claim_id": "v7_failure_case_b_core_claim_01",
+        "claim_text": "v7_failure case_b 的核心判断由可追溯训练稿事实支撑。",
+        "claim_type": "core_judgment",
+        "supporting_facts": [
+          {
+            "fact": "v7_failure 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+            "source": {
+              "title": "v7_failure historical training artifact",
+              "url": "file://outputs/daily-training/v7_failure",
+              "source_type": "official_doc",
+              "published_at": "2026-06-25",
+              "accessed_at": "2026-06-28",
+              "fact_confidence": "A"
+            },
+            "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+          }
+        ],
+        "support_level": "SUFFICIENT",
+        "unsupported_parts": [],
+        "decision_impact": "supports core_judgment"
+      }
+    ]
+  },
+  "case_c": {
+    "case_id": "case_c",
+    "claims": [
+      {
+        "claim_id": "v7_failure_case_c_core_claim_01",
+        "claim_text": "v7_failure case_c 的核心判断由可追溯训练稿事实支撑。",
+        "claim_type": "core_judgment",
+        "supporting_facts": [
+          {
+            "fact": "v7_failure 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+            "source": {
+              "title": "v7_failure historical training artifact",
+              "url": "file://outputs/daily-training/v7_failure",
+              "source_type": "official_doc",
+              "published_at": "2026-06-25",
+              "accessed_at": "2026-06-28",
+              "fact_confidence": "A"
+            },
+            "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+          }
+        ],
+        "support_level": "SUFFICIENT",
+        "unsupported_parts": [],
+        "decision_impact": "supports core_judgment"
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+version: "2.1"
+purpose: "Rubric v2.1 enum single source of truth. Do not create aliases in docs, schemas, prompts, validators, or tests."
+
+item_ids:
+  - thinking.p6_to_p7_reframe
+  - thinking.problem_reframing
+  - thinking.eightq_reasoning_validity
+  - thinking.causal_mechanism
+  - thinking.system_relation_value_flow
+  - thinking.counterfactual_boundary
+  - thinking.trend_projection
+  - thinking.final_tradeoff_validation
+  - thinking.method_insight_generation
+  - content.fact_support_core_claim
+  - content.source_traceability
+  - content.case_specificity_context
+  - content.claim_evidence_alignment
+  - content.uncertainty_boundary
+  - content.information_density
+  - expression.conclusion_first
+  - expression.structure_readability
+  - expression.prep_scqa_quality
+  - expression.interview_followup_resilience
+  - expression.case_asset_card_transfer
+  - expression.memory_point_pattern
+
+failure_types:
+  - NO_AB_EVIDENCE_FOR_CORE_CLAIM
+  - CLAIM_EVIDENCE_MISMATCH
+  - SOURCE_UNTRACEABLE
+  - C_OR_D_FACT_SUPPORTS_CORE_CLAIM
+  - EMPTY_8Q_REASONING
+  - INCOMPLETE_8Q_FIELDS
+  - DISCONNECTED_8Q_CHAIN
+  - BOILERPLATE_REASONING
+  - WEAK_CAUSAL_CHAIN
+  - NO_CAUSAL_MECHANISM
+  - METHOD_NAME_DROPPING
+  - METHOD_NO_INSIGHT
+  - NO_COUNTERFACTUAL_BOUNDARY
+  - NO_FINAL_TRADEOFF
+  - NO_VALIDATION_PATH
+  - NEWS_SUMMARY_ONLY
+  - CASE_DEPTH_IMBALANCE
+  - PREP_NOT_USABLE
+  - ASSET_CARD_GENERIC
+  - SELF_REVIEW_INFLATION
+  - REVIEW_EVIDENCE_INVALID
+  - HTML_CONTENT_LOSS
+  - HTML_EMPTY_SECTION
+  - REVIEWER_OUTPUT_INVALID
+  - CALIBRATION_ASSERTION_FAILED
+
+decision_states:
+  - PASS
+  - PASS_WITH_MINOR_REPAIR
+  - REVIEW
+  - REWRITE_MODULE
+  - REWRITE_CASE
+  - REPLACE_CASE
+  - FAIL_DAILY
+  - PUBLISH_BLOCK
+  - USER_REVIEW_REQUIRED
+
+decision_priority:
+  - PUBLISH_BLOCK
+  - FAIL_DAILY
+  - REPLACE_CASE
+  - REWRITE_CASE
+  - REWRITE_MODULE
+  - USER_REVIEW_REQUIRED
+  - REVIEW
+  - PASS_WITH_MINOR_REPAIR
+  - PASS
+
+content_repair_targets:
+  - supplement_sources
+  - replace_case
+  - rewrite_case_background
+  - rewrite_8q_reasoning
+  - rewrite_method_workbench
+  - rewrite_causal_chain
+  - rewrite_counterargument_boundary
+  - rewrite_tradeoff_validation
+  - rewrite_expression
+  - rewrite_asset_card
+  - rerender_html
+  - repair_html_renderer
+  - request_human_review
+
+system_repair_targets:
+  - skill_prompt
+  - framework_md
+  - templates_md
+  - rubric_anchor
+  - validator
+  - html_validator
+  - reviewer_prompt
+  - calibration_set
+  - failure_feedback_registry
+  - renderer
+  - ops_gate_mapping
+  - source_policy
+
+gate_ids:
+  - G0
+  - G1
+  - G2
+  - G3
+  - G4
+  - G5
+  - G6
+  - G7
+  - G8
+  - rubric_scoring
+  - second_review
+  - human_review
+
+check_types:
+  - machine_check
+  - heuristic_check
+  - llm_review
+  - human_review
+
+evidence_sufficiency:
+  - SUFFICIENT
+  - PARTIAL
+  - INSUFFICIENT
+  - MISSING
+
+fact_confidence:
+  - A
+  - B
+  - C
+  - D
+
+source_types:
+  - official_doc
+  - github_repo
+  - paper
+  - media
+  - ai_hot
+  - community

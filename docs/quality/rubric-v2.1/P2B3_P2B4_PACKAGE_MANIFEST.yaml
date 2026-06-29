@@ -1,0 +1,121 @@
+package_name: rubric-v2.1-p2b3-p2b4-shadow-package.zip
+rubric_version: "2.1"
+stage: P2B-3 third-date samples + P2B-4 pre-production shadow run
+created_at: "2026-06-29T10:27:38+0800"
+status: ready_for_external_review
+test_command: "python3 -m unittest tests.test_rubric_v21_governance tests.test_rubric_v21_adversarial tests.test_rubric_v21_anchor_quality tests.test_rubric_v21_calibration_replay tests.test_rubric_v21_reviewer_generator tests.test_rubric_v21_p2b0_local_reviewer tests.test_rubric_v21_live_reviewer_samples tests.test_rubric_v21_live_reviewer_v7 tests.test_rubric_v21_live_reviewer_stability tests.test_rubric_v21_live_reviewer_cross_samples tests.test_rubric_v21_live_reviewer_p2b3 tests.test_rubric_v21_live_reviewer_p2b3_samples tests.test_rubric_v21_shadow_review"
+expected_test_result: "Ran 146 tests OK"
+scope:
+  p2b3:
+    status: PASS
+    date_added: "2026-06-28"
+    sample_count: 3
+    samples:
+      - id: 2026_06_28_training_v8_pass
+        expected: PASS
+        actual: PASS
+        publish_allowed: true
+      - id: 2026_06_28_training_v8_review_boilerplate
+        expected: REVIEW
+        actual: REVIEW
+        publish_allowed: false
+        failure_types:
+          - BOILERPLATE_REASONING
+          - REVIEW_EVIDENCE_INVALID
+      - id: 2026_06_28_training_v8_review_method_overlap
+        expected: REVIEW
+        actual: REVIEW
+        publish_allowed: false
+        failure_types:
+          - BOILERPLATE_REASONING
+          - REVIEW_EVIDENCE_INVALID
+  p2b4:
+    status: PASS
+    date: "2026-06-28"
+    decision: REVIEW
+    reviewer_publish_allowed: false
+    shadow_publish_allowed: false
+    formal_publish_allowed: false
+    governance_validator_status: PASS
+    failure_package_created: true
+    failure_types:
+      - BOILERPLATE_REASONING
+      - REVIEW_EVIDENCE_INVALID
+boundaries:
+  - "P2B-4 is shadow-only."
+  - "This package does not enter P2C."
+  - "This package does not update the public website."
+  - "This package does not send user notifications."
+  - "The reviewer used here is a local semantic reviewer, not a live LLM reviewer."
+  - "Shadow PASS is not formal PASS."
+external_replay_dependencies:
+  purpose: "Dependencies required for external replay of P2B-4 shadow run tests after unzipping the package."
+  skill_scripts:
+    shadow_html_renderer:
+      path: skill/scripts/render_training_reader_html.py
+      used_by: scripts/run_daily_shadow_review.py
+      dependency_type: runtime_import
+      imported_via: importlib.util.spec_from_file_location
+      local_dependencies: "Python standard library only"
+    shadow_html_validator:
+      path: skill/scripts/validate_training_reader_html.py
+      used_by: tests/test_rubric_v21_shadow_review.py
+      dependency_type: subprocess_cli
+      local_dependencies: "Python standard library only"
+  package_fix_reason:
+    - "External replay failed because the previous zip did not include skill/scripts/render_training_reader_html.py."
+    - "P2B-4 shadow tests also require skill/scripts/validate_training_reader_html.py."
+    - "Both files are now explicitly included so clean-directory replay can run without the original workspace."
+included_paths:
+  reports:
+    - docs/quality/rubric-v2.1/P2B3_P2B4_COMPLETION_REPORT.md
+    - docs/quality/rubric-v2.1/P2B3_P2B4_PACKAGE_MANIFEST.yaml
+    - docs/quality/rubric-v2.1/live-reviewer-p2b3-sample-report.md
+    - docs/quality/rubric-v2.1/live-reviewer-cross-sample-report.md
+    - docs/quality/rubric-v2.1/shadow-run-report.md
+  rubric_core:
+    - docs/quality/rubric-v2.1/rubric-v2.1.md
+    - docs/quality/rubric-v2.1/rubric-enums.yaml
+    - docs/quality/rubric-v2.1/rubric-score-anchors.yaml
+    - docs/quality/rubric-v2.1/reviewer-output.schema.json
+    - docs/quality/rubric-v2.1/claim-evidence-map.schema.json
+    - docs/quality/rubric-v2.1/failure-object.schema.json
+    - docs/quality/rubric-v2.1/repair-rerun-map.yaml
+    - docs/quality/rubric-v2.1/validator-check-map.yaml
+    - docs/quality/rubric-v2.1/rubric_governance_validator.py
+  p2b3_generated_replay:
+    - docs/quality/rubric-v2.1/generated-replay/p2b3-samples/
+  p2b4_shadow_run:
+    - docs/quality/rubric-v2.1/shadow-runs/2026-06-28/
+  source_outputs:
+    - outputs/daily-training/2026-06-28/
+  scripts:
+    - scripts/generate_reviewer_payload.py
+    - scripts/run_daily_shadow_review.py
+    - scripts/run_live_reviewer_cross_samples.py
+    - scripts/run_live_reviewer_generation.py
+    - scripts/run_live_reviewer_generation_v7.py
+    - scripts/run_live_reviewer_p2b3_samples.py
+    - scripts/run_live_reviewer_stability.py
+    - scripts/run_reviewer_generation_replay.py
+  skill_scripts:
+    - skill/scripts/render_training_reader_html.py
+    - skill/scripts/validate_training_reader_html.py
+  tests:
+    - tests/test_rubric_v21_governance.py
+    - tests/test_rubric_v21_adversarial.py
+    - tests/test_rubric_v21_anchor_quality.py
+    - tests/test_rubric_v21_calibration_replay.py
+    - tests/test_rubric_v21_reviewer_generator.py
+    - tests/test_rubric_v21_p2b0_local_reviewer.py
+    - tests/test_rubric_v21_live_reviewer_samples.py
+    - tests/test_rubric_v21_live_reviewer_v7.py
+    - tests/test_rubric_v21_live_reviewer_stability.py
+    - tests/test_rubric_v21_live_reviewer_cross_samples.py
+    - tests/test_rubric_v21_live_reviewer_p2b3.py
+    - tests/test_rubric_v21_live_reviewer_p2b3_samples.py
+    - tests/test_rubric_v21_shadow_review.py
+next_plan:
+  - "Keep running shadow-only daily reviews before P2C."
+  - "Use every REVIEW / FAIL output as a failure package for content and governance repair."
+  - "Do not connect publication or user notification until manual P2C approval."

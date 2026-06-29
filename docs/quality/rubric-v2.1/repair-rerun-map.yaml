@@ -1,0 +1,174 @@
+version: "2.1"
+purpose: "Defines which downstream gates must rerun after each repair action."
+
+content_change_rule:
+  content_changed: true
+  html_stale: true
+  must_rerender_html: true
+  must_rerun_gates:
+    - G6
+    - G7
+    - G8
+  rule: "Any Markdown content repair invalidates existing HTML. Never reuse old HTML after content repair."
+
+repair_targets:
+  supplement_sources:
+    content_changed: true
+    must_rerun_gates:
+      - G1
+      - G4
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - content.fact_support_core_claim
+      - content.source_traceability
+      - content.claim_evidence_alignment
+      - content.uncertainty_boundary
+
+  replace_case:
+    content_changed: true
+    must_rerun_gates:
+      - G1
+      - G2
+      - G3
+      - G4
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.p6_to_p7_reframe
+      - thinking.problem_reframing
+      - content.fact_support_core_claim
+
+  rewrite_case_background:
+    content_changed: true
+    must_rerun_gates:
+      - G3
+      - G4
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - content.case_specificity_context
+      - content.information_density
+      - content.claim_evidence_alignment
+
+  rewrite_8q_reasoning:
+    content_changed: true
+    must_rerun_gates:
+      - G3
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.eightq_reasoning_validity
+      - thinking.causal_mechanism
+      - thinking.final_tradeoff_validation
+
+  rewrite_method_workbench:
+    content_changed: true
+    must_rerun_gates:
+      - G3
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.method_insight_generation
+      - thinking.causal_mechanism
+      - thinking.system_relation_value_flow
+
+  rewrite_causal_chain:
+    content_changed: true
+    must_rerun_gates:
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.causal_mechanism
+      - thinking.trend_projection
+      - thinking.final_tradeoff_validation
+
+  rewrite_counterargument_boundary:
+    content_changed: true
+    must_rerun_gates:
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.counterfactual_boundary
+      - content.uncertainty_boundary
+
+  rewrite_tradeoff_validation:
+    content_changed: true
+    must_rerun_gates:
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - thinking.final_tradeoff_validation
+      - expression.conclusion_first
+      - expression.interview_followup_resilience
+
+  rewrite_expression:
+    content_changed: true
+    must_rerun_gates:
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - expression.conclusion_first
+      - expression.prep_scqa_quality
+      - expression.interview_followup_resilience
+
+  rewrite_asset_card:
+    content_changed: true
+    must_rerun_gates:
+      - G5
+      - rubric_scoring
+      - G6
+      - G7
+      - G8
+    must_rerun_items:
+      - expression.case_asset_card_transfer
+      - expression.memory_point_pattern
+
+  rerender_html:
+    content_changed: false
+    must_rerun_gates:
+      - G6
+      - G7
+      - G8
+    must_rerun_items: []
+
+  repair_html_renderer:
+    content_changed: false
+    must_rerun_gates:
+      - G6
+      - G7
+      - G8
+    must_rerun_items: []
+
+  request_human_review:
+    content_changed: false
+    must_rerun_gates:
+      - human_review
+    must_rerun_items: []

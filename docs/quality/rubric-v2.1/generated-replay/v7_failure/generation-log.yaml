@@ -1,0 +1,50 @@
+sample_id: v7_failure
+created_at: '2026-06-29T04:34:25+00:00'
+prompt_version: p2a-recorded-generator-v1
+generation_method: recorded_fixture_replay
+recorded_generation: true
+not_live_llm_review: true
+input_files:
+- path: outputs/daily-training/2026-06-26/training-v7-raw.md
+  exists: true
+  role: training_markdown
+  bytes: 104430
+  sha256: 48bbe3a23c2ae98e6a373a9fe6e79fec2dee85882f14aae854fb5ec67f262da9
+- path: outputs/daily-training/2026-06-26/training-v7-reader.html
+  exists: true
+  role: reader_html
+  bytes: 363735
+  sha256: 4c26f9a77170a8e646f4aa7101360179bfbc510a7275dcab5f164d9b170b46c3
+- path: outputs/daily-training/2026-06-26/source-notes-v7.md
+  exists: true
+  role: source_record_or_audit
+  bytes: 2532
+  sha256: 130057725e6dc6c62d52611d5d21b8314696eef1583bdc1736145be70fc1cdec
+- path: outputs/daily-training/2026-06-26/v6-v7-regression-audit.md
+  exists: true
+  role: source_record_or_audit
+  bytes: 5659
+  sha256: 2c2ec6ed8fb3dd90d8b931a14c9c0e321f3c208f81d27b2a80c2b202c645ce21
+- path: outputs/daily-training/2026-06-26/quality-gate-hardening-report.md
+  exists: true
+  role: source_record_or_audit
+  bytes: 3252
+  sha256: 283a83d1f789556f574622ed9e3cfb311e9ca94ffb348e49c6508fdf096e84fd
+rubric_dir: docs/quality/rubric-v2.1
+fixture_dir: docs/quality/rubric-v2.1/fixtures/calibration/v7_failure
+output_paths:
+  reviewer_output_path: docs/quality/rubric-v2.1/generated-replay/v7_failure/reviewer-output.json
+  claim_evidence_map_path: docs/quality/rubric-v2.1/generated-replay/v7_failure/claim-evidence-map.json
+  failure_objects_path: docs/quality/rubric-v2.1/generated-replay/v7_failure/failure-objects.json
+  generation_log_path: docs/quality/rubric-v2.1/generated-replay/v7_failure/generation-log.yaml
+  validator_result_path: docs/quality/rubric-v2.1/generated-replay/v7_failure/validator-result.yaml
+validator_result:
+  validator_status: FAIL
+  reviewer_error_count: 3
+  claim_evidence_map_error_count: 0
+  failure_object_error_count: 0
+self_review_policy:
+  rule_id: self_review_is_subject_not_authority
+  ignored_as_release_evidence: true
+  note: Insight Quality Audit / self-review text is treated as reviewed content, never
+    as a release authority.

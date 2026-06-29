@@ -1,0 +1,2349 @@
+{
+  "reviewer_output_valid": true,
+  "reviewer_id": "calibration-replay-reviewer",
+  "reviewed_at": "2026-06-28T00:00:00+08:00",
+  "rubric_version": "2.1",
+  "case_score_policy": "each_deep_case_scored_independently_100",
+  "daily_score_policy": "no_cross_case_compensation",
+  "daily_decision_rule": "all_cases_must_pass",
+  "daily_decision": "PASS",
+  "publish_allowed": true,
+  "case_reviews": [
+    {
+      "case_id": "case_a",
+      "case_title": "OpenAI + Broadcom Jalapeño 推理芯片",
+      "claim_evidence_map": [
+        {
+          "case_id": "case_a",
+          "claims": [
+            {
+              "claim_id": "v6_target_case_a_core_claim_01",
+              "claim_text": "v6_target case_a 的核心判断由可追溯训练稿事实支撑。",
+              "claim_type": "core_judgment",
+              "supporting_facts": [
+                {
+                  "fact": "v6_target 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+                  "source": {
+                    "title": "v6_target historical training artifact",
+                    "url": "file://outputs/daily-training/v6_target",
+                    "source_type": "official_doc",
+                    "published_at": "2026-06-25",
+                    "accessed_at": "2026-06-28",
+                    "fact_confidence": "A"
+                  },
+                  "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+                }
+              ],
+              "support_level": "SUFFICIENT",
+              "unsupported_parts": [],
+              "decision_impact": "supports core_judgment"
+            }
+          ]
+        }
+      ],
+      "item_reviews": [
+        {
+          "item_id": "thinking.p6_to_p7_reframe",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.p6_to_p7_reframe",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.p6_to_p7_reframe",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.problem_reframing",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.problem_reframing",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.problem_reframing",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.eightq_reasoning_validity",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 6,
+          "raw_score": 6,
+          "caps_applied": [],
+          "capped_score": 6,
+          "deductions_applied": [],
+          "adjusted_score": 6,
+          "final_score": 6,
+          "anchor_matched": "6分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.eightq_reasoning_validity",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.eightq_reasoning_validity",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.causal_mechanism",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 7,
+          "raw_score": 7,
+          "caps_applied": [],
+          "capped_score": 7,
+          "deductions_applied": [],
+          "adjusted_score": 7,
+          "final_score": 7,
+          "anchor_matched": "7分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.causal_mechanism",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.causal_mechanism",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.system_relation_value_flow",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.system_relation_value_flow",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.system_relation_value_flow",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.counterfactual_boundary",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.counterfactual_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.counterfactual_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.trend_projection",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.trend_projection",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.trend_projection",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.final_tradeoff_validation",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.final_tradeoff_validation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.final_tradeoff_validation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.method_insight_generation",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_thinking.method_insight_generation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/thinking.method_insight_generation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.fact_support_core_claim",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 8,
+          "raw_score": 8,
+          "caps_applied": [],
+          "capped_score": 8,
+          "deductions_applied": [],
+          "adjusted_score": 8,
+          "final_score": 8,
+          "anchor_matched": "8分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.fact_support_core_claim",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.fact_support_core_claim",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.source_traceability",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.source_traceability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.source_traceability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.case_specificity_context",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.case_specificity_context",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.case_specificity_context",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.claim_evidence_alignment",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.claim_evidence_alignment",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.claim_evidence_alignment",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.uncertainty_boundary",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.uncertainty_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.uncertainty_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.information_density",
+          "level": "B",
+          "primary_account": "content_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_content.information_density",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/content.information_density",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.conclusion_first",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.conclusion_first",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.conclusion_first",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.structure_readability",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.structure_readability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.structure_readability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.prep_scqa_quality",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.prep_scqa_quality",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.prep_scqa_quality",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.interview_followup_resilience",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.interview_followup_resilience",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.interview_followup_resilience",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.case_asset_card_transfer",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.case_asset_card_transfer",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.case_asset_card_transfer",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.memory_point_pattern",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_a replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_a_expression.memory_point_pattern",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_a/expression.memory_point_pattern",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        }
+      ],
+      "account_scores": [
+        {
+          "account_id": "thinking_depth",
+          "account_raw_score": 45,
+          "account_cap_applied": null,
+          "account_final_score": 45,
+          "min_pass_score": 38
+        },
+        {
+          "account_id": "content_quality",
+          "account_raw_score": 30,
+          "account_cap_applied": null,
+          "account_final_score": 30,
+          "min_pass_score": 25
+        },
+        {
+          "account_id": "expression_quality",
+          "account_raw_score": 25,
+          "account_cap_applied": null,
+          "account_final_score": 25,
+          "min_pass_score": 21
+        }
+      ],
+      "case_raw_total": 100,
+      "case_global_cap_applied": null,
+      "case_final_total": 100,
+      "case_decision": "PASS",
+      "publish_allowed": true
+    },
+    {
+      "case_id": "case_b",
+      "case_title": "Mistral Connectors 企业治理控制",
+      "claim_evidence_map": [
+        {
+          "case_id": "case_b",
+          "claims": [
+            {
+              "claim_id": "v6_target_case_b_core_claim_01",
+              "claim_text": "v6_target case_b 的核心判断由可追溯训练稿事实支撑。",
+              "claim_type": "core_judgment",
+              "supporting_facts": [
+                {
+                  "fact": "v6_target 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+                  "source": {
+                    "title": "v6_target historical training artifact",
+                    "url": "file://outputs/daily-training/v6_target",
+                    "source_type": "official_doc",
+                    "published_at": "2026-06-25",
+                    "accessed_at": "2026-06-28",
+                    "fact_confidence": "A"
+                  },
+                  "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+                }
+              ],
+              "support_level": "SUFFICIENT",
+              "unsupported_parts": [],
+              "decision_impact": "supports core_judgment"
+            }
+          ]
+        }
+      ],
+      "item_reviews": [
+        {
+          "item_id": "thinking.p6_to_p7_reframe",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.p6_to_p7_reframe",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.p6_to_p7_reframe",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.problem_reframing",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.problem_reframing",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.problem_reframing",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.eightq_reasoning_validity",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 6,
+          "raw_score": 6,
+          "caps_applied": [],
+          "capped_score": 6,
+          "deductions_applied": [],
+          "adjusted_score": 6,
+          "final_score": 6,
+          "anchor_matched": "6分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.eightq_reasoning_validity",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.eightq_reasoning_validity",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.causal_mechanism",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 7,
+          "raw_score": 7,
+          "caps_applied": [],
+          "capped_score": 7,
+          "deductions_applied": [],
+          "adjusted_score": 7,
+          "final_score": 7,
+          "anchor_matched": "7分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.causal_mechanism",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.causal_mechanism",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.system_relation_value_flow",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.system_relation_value_flow",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.system_relation_value_flow",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.counterfactual_boundary",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.counterfactual_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.counterfactual_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.trend_projection",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.trend_projection",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.trend_projection",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.final_tradeoff_validation",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.final_tradeoff_validation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.final_tradeoff_validation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.method_insight_generation",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_thinking.method_insight_generation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/thinking.method_insight_generation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.fact_support_core_claim",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 8,
+          "raw_score": 8,
+          "caps_applied": [],
+          "capped_score": 8,
+          "deductions_applied": [],
+          "adjusted_score": 8,
+          "final_score": 8,
+          "anchor_matched": "8分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.fact_support_core_claim",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.fact_support_core_claim",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.source_traceability",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.source_traceability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.source_traceability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.case_specificity_context",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.case_specificity_context",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.case_specificity_context",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.claim_evidence_alignment",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.claim_evidence_alignment",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.claim_evidence_alignment",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.uncertainty_boundary",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.uncertainty_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.uncertainty_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.information_density",
+          "level": "B",
+          "primary_account": "content_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_content.information_density",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/content.information_density",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.conclusion_first",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.conclusion_first",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.conclusion_first",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.structure_readability",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.structure_readability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.structure_readability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.prep_scqa_quality",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.prep_scqa_quality",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.prep_scqa_quality",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.interview_followup_resilience",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.interview_followup_resilience",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.interview_followup_resilience",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.case_asset_card_transfer",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.case_asset_card_transfer",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.case_asset_card_transfer",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.memory_point_pattern",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_b replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_b_expression.memory_point_pattern",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_b/expression.memory_point_pattern",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        }
+      ],
+      "account_scores": [
+        {
+          "account_id": "thinking_depth",
+          "account_raw_score": 45,
+          "account_cap_applied": null,
+          "account_final_score": 45,
+          "min_pass_score": 38
+        },
+        {
+          "account_id": "content_quality",
+          "account_raw_score": 30,
+          "account_cap_applied": null,
+          "account_final_score": 30,
+          "min_pass_score": 25
+        },
+        {
+          "account_id": "expression_quality",
+          "account_raw_score": 25,
+          "account_cap_applied": null,
+          "account_final_score": 25,
+          "min_pass_score": 21
+        }
+      ],
+      "case_raw_total": 100,
+      "case_global_cap_applied": null,
+      "case_final_total": 100,
+      "case_decision": "PASS",
+      "publish_allowed": true
+    },
+    {
+      "case_id": "case_c",
+      "case_title": "Google Thinking to Recall",
+      "claim_evidence_map": [
+        {
+          "case_id": "case_c",
+          "claims": [
+            {
+              "claim_id": "v6_target_case_c_core_claim_01",
+              "claim_text": "v6_target case_c 的核心判断由可追溯训练稿事实支撑。",
+              "claim_type": "core_judgment",
+              "supporting_facts": [
+                {
+                  "fact": "v6_target 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+                  "source": {
+                    "title": "v6_target historical training artifact",
+                    "url": "file://outputs/daily-training/v6_target",
+                    "source_type": "official_doc",
+                    "published_at": "2026-06-25",
+                    "accessed_at": "2026-06-28",
+                    "fact_confidence": "A"
+                  },
+                  "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+                }
+              ],
+              "support_level": "SUFFICIENT",
+              "unsupported_parts": [],
+              "decision_impact": "supports core_judgment"
+            }
+          ]
+        }
+      ],
+      "item_reviews": [
+        {
+          "item_id": "thinking.p6_to_p7_reframe",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.p6_to_p7_reframe",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.p6_to_p7_reframe",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.problem_reframing",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.problem_reframing",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.problem_reframing",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.eightq_reasoning_validity",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 6,
+          "raw_score": 6,
+          "caps_applied": [],
+          "capped_score": 6,
+          "deductions_applied": [],
+          "adjusted_score": 6,
+          "final_score": 6,
+          "anchor_matched": "6分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.eightq_reasoning_validity",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.eightq_reasoning_validity",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.causal_mechanism",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 7,
+          "raw_score": 7,
+          "caps_applied": [],
+          "capped_score": 7,
+          "deductions_applied": [],
+          "adjusted_score": 7,
+          "final_score": 7,
+          "anchor_matched": "7分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.causal_mechanism",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.causal_mechanism",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.system_relation_value_flow",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.system_relation_value_flow",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.system_relation_value_flow",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.counterfactual_boundary",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.counterfactual_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.counterfactual_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.trend_projection",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.trend_projection",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.trend_projection",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.final_tradeoff_validation",
+          "level": "S",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.final_tradeoff_validation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.final_tradeoff_validation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "thinking.method_insight_generation",
+          "level": "A",
+          "primary_account": "thinking_depth",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_thinking.method_insight_generation",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/thinking.method_insight_generation",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.fact_support_core_claim",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 8,
+          "raw_score": 8,
+          "caps_applied": [],
+          "capped_score": 8,
+          "deductions_applied": [],
+          "adjusted_score": 8,
+          "final_score": 8,
+          "anchor_matched": "8分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.fact_support_core_claim",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.fact_support_core_claim",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.source_traceability",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.source_traceability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.source_traceability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.case_specificity_context",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.case_specificity_context",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.case_specificity_context",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.claim_evidence_alignment",
+          "level": "S",
+          "primary_account": "content_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.claim_evidence_alignment",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.claim_evidence_alignment",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.uncertainty_boundary",
+          "level": "A",
+          "primary_account": "content_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.uncertainty_boundary",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.uncertainty_boundary",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "content.information_density",
+          "level": "B",
+          "primary_account": "content_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_content.information_density",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/content.information_density",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.conclusion_first",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.conclusion_first",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.conclusion_first",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.structure_readability",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.structure_readability",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.structure_readability",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.prep_scqa_quality",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.prep_scqa_quality",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.prep_scqa_quality",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.interview_followup_resilience",
+          "level": "A",
+          "primary_account": "expression_quality",
+          "max_score": 4,
+          "raw_score": 4,
+          "caps_applied": [],
+          "capped_score": 4,
+          "deductions_applied": [],
+          "adjusted_score": 4,
+          "final_score": 4,
+          "anchor_matched": "4分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.interview_followup_resilience",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.interview_followup_resilience",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.case_asset_card_transfer",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 5,
+          "raw_score": 5,
+          "caps_applied": [],
+          "capped_score": 5,
+          "deductions_applied": [],
+          "adjusted_score": 5,
+          "final_score": 5,
+          "anchor_matched": "5分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.case_asset_card_transfer",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.case_asset_card_transfer",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        },
+        {
+          "item_id": "expression.memory_point_pattern",
+          "level": "B",
+          "primary_account": "expression_quality",
+          "max_score": 3,
+          "raw_score": 3,
+          "caps_applied": [],
+          "capped_score": 3,
+          "deductions_applied": [],
+          "adjusted_score": 3,
+          "final_score": 3,
+          "anchor_matched": "3分 replay anchor",
+          "required_evidence_points": [
+            {
+              "point": "v6_target case_c replay evidence point",
+              "support_level": "SUFFICIENT"
+            }
+          ],
+          "item_evidence_sufficiency": "SUFFICIENT",
+          "positive_evidence": [
+            {
+              "evidence_id": "v6_target_case_c_expression.memory_point_pattern",
+              "quote": "v6_target source artifact contains this case module and reviewer replay evidence.",
+              "location": "v6_target/case_c/expression.memory_point_pattern",
+              "supports_what": "supports replay scoring for this item",
+              "evidence_sufficiency": "SUFFICIENT"
+            }
+          ],
+          "missing_evidence": [],
+          "deduction_reason": "",
+          "why_not_higher": "",
+          "repair_action": "",
+          "decision": "PASS"
+        }
+      ],
+      "account_scores": [
+        {
+          "account_id": "thinking_depth",
+          "account_raw_score": 45,
+          "account_cap_applied": null,
+          "account_final_score": 45,
+          "min_pass_score": 38
+        },
+        {
+          "account_id": "content_quality",
+          "account_raw_score": 30,
+          "account_cap_applied": null,
+          "account_final_score": 30,
+          "min_pass_score": 25
+        },
+        {
+          "account_id": "expression_quality",
+          "account_raw_score": 25,
+          "account_cap_applied": null,
+          "account_final_score": 25,
+          "min_pass_score": 21
+        }
+      ],
+      "case_raw_total": 100,
+      "case_global_cap_applied": null,
+      "case_final_total": 100,
+      "case_decision": "PASS",
+      "publish_allowed": true
+    }
+  ],
+  "gate_statuses": {
+    "G6": "PASS",
+    "G7": "PASS",
+    "G8": "PASS"
+  }
+}

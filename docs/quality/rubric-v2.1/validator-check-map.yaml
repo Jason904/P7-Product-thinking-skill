@@ -1,0 +1,708 @@
+version: '2.1'
+purpose: Separates deterministic validators, heuristic checks, LLM review, and user-only
+  judgment.
+check_types:
+- machine_check
+- heuristic_check
+- llm_review
+- human_review
+checks:
+  deep_case_count:
+    check_type: machine_check
+    owner: markdown_validator
+    description: Daily training must contain exactly 3 deep cases.
+    failure_type: CASE_DEPTH_IMBALANCE
+  required_section_presence:
+    check_type: machine_check
+    owner: markdown_validator
+    description: Required modules such as Insight, 8问, 方法工作台, PREP, SCQA, Asset Card
+      must exist.
+    failure_type: INCOMPLETE_8Q_FIELDS
+  eightq_question_count:
+    check_type: machine_check
+    owner: markdown_validator
+    description: 8问 must contain 8 questions.
+    failure_type: EMPTY_8Q_REASONING
+  eightq_field_presence:
+    check_type: machine_check
+    owner: markdown_validator
+    description: Each valid 8问 item must include purpose, method, why, derivation,
+      stage conclusion, and next-step impact.
+    failure_type: INCOMPLETE_8Q_FIELDS
+  html_core_content_preserved:
+    check_type: machine_check
+    owner: html_validator
+    description: Rendered HTML must retain core Markdown content and cannot contain
+      empty reasoning shells.
+    failure_type: HTML_CONTENT_LOSS
+  formula_consistency:
+    check_type: machine_check
+    owner: reviewer_output_validator
+    description: Reviewer score lifecycle and account totals must be mathematically
+      consistent.
+    failure_type: REVIEWER_OUTPUT_INVALID
+  repeated_answer_density:
+    check_type: heuristic_check
+    owner: reviewer_output_validator
+    description: Detect repeated, template-like answers across 8问 fields.
+    failure_type: BOILERPLATE_REASONING
+  vague_answer_count:
+    check_type: heuristic_check
+    owner: reviewer_output_validator
+    description: Flag vague answers that do not name case-specific variables.
+    failure_type: BOILERPLATE_REASONING
+  evidence_source_traceability:
+    check_type: heuristic_check
+    owner: source_validator
+    description: Check whether source objects include title, url, source_type, accessed_at,
+      and confidence.
+    failure_type: SOURCE_UNTRACEABLE
+  eightq_chain_continuity:
+    check_type: llm_review
+    owner: independent_reviewer
+    description: Judge whether the 8问 answers form a continuous reasoning chain rather
+      than isolated notes.
+    failure_type: DISCONNECTED_8Q_CHAIN
+  method_generates_insight:
+    check_type: llm_review
+    owner: independent_reviewer
+    description: Judge whether analysis methods changed or deepened the final judgment.
+    failure_type: METHOD_NO_INSIGHT
+  causal_mechanism_strength:
+    check_type: llm_review
+    owner: independent_reviewer
+    description: Judge whether variables explain how and why the case changes product/business
+      outcomes.
+    failure_type: WEAK_CAUSAL_CHAIN
+  counterfactual_boundary_quality:
+    check_type: llm_review
+    owner: independent_reviewer
+    description: Judge whether the case explains when the judgment would fail or need
+      revision.
+    failure_type: NO_COUNTERFACTUAL_BOUNDARY
+  prep_scqa_usability:
+    check_type: llm_review
+    owner: independent_reviewer
+    description: Judge whether PREP/SCQA can be used in interview or report settings.
+    failure_type: PREP_NOT_USABLE
+  career_asset_preference:
+    check_type: human_review
+    owner: user_quality_owner
+    description: Only the user decides whether a case fits their personal growth and
+      career moat.
+    failure_type: USER_REVIEW_REQUIRED
+  severe_bad_case_closure:
+    check_type: human_review
+    owner: user_quality_owner
+    description: Only the user can close a severe Bad Case reported through Codex/browser
+      comments.
+    failure_type: USER_REVIEW_REQUIRED
+objective_checks:
+  accessed_at_recorded:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: accessed_at_recorded.'
+  action_implication_derived:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: action_implication_derived.'
+  actor_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: actor_identified.'
+  affected_user_or_org_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: affected_user_or_org_identified.'
+  ai_hot_if_used_marked_signal_only:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: ai_hot_if_used_marked_signal_only.'
+  alternative_reframe_rejected:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: alternative_reframe_rejected.'
+  anchors_match_sections:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: anchors_match_sections.'
+  answer_names_boundary_or_condition:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: answer_names_boundary_or_condition.'
+  answer_updates_decision_if_needed:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: answer_updates_decision_if_needed.'
+  answer_uses_fact_or_mechanism:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: answer_uses_fact_or_mechanism.'
+  applicable_use_scenario_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: applicable_use_scenario_specific.'
+  asset_card_compresses_without_distortion:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: asset_card_compresses_without_distortion.'
+  asset_card_inherits_core_judgment:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: asset_card_inherits_core_judgment.'
+  asset_card_structured:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: asset_card_structured.'
+  asset_grade_with_reason_supported:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: asset_grade_with_reason_supported.'
+  avoided_action_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: avoided_action_specific.'
+  beneficiary_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: beneficiary_identified.'
+  boilerplate_count_le_1:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: boilerplate_count_le_1.'
+  c_or_d_not_used_for_core_claim:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: c_or_d_not_used_for_core_claim.'
+  case_fact_supports_reframe:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: case_fact_supports_reframe.'
+  case_specific_variables_ge_4:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: case_specific_variables_ge_4.'
+  cause_variables_case_specific_and_directional:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: cause_variables_case_specific_and_directional.'
+  claim_boundary_affects_decision:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: claim_boundary_affects_decision.'
+  claim_ids_available:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: claim_ids_available.'
+  conclusion_before_detail:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: conclusion_before_detail.'
+  conclusion_links_to_action:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: conclusion_links_to_action.'
+  confirmed_facts_section_separated:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: confirmed_facts_section_separated.'
+  continuity_edges_ge_5:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: continuity_edges_ge_5.'
+  contrastive_judgment_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: contrastive_judgment_case_specific.'
+  control_point_shift_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: control_point_shift_explained.'
+  core_claim_count_1_to_3:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: core_claim_count_1_to_3.'
+  cost_bearer_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: cost_bearer_identified.'
+  counter_mechanism_considered:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: counter_mechanism_considered.'
+  counterargument_followup_addressed:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: counterargument_followup_addressed.'
+  current_stage_evidence_based:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: current_stage_evidence_based.'
+  date_or_release_context_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: date_or_release_context_specific.'
+  decision_change_rule_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: decision_change_rule_explicit.'
+  decision_rule_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: decision_rule_explicit.'
+  deeper_problem_reframed_from_surface:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: deeper_problem_reframed_from_surface.'
+  dependency_assumptions_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: dependency_assumptions_explicit.'
+  derivation_shown:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: derivation_shown.'
+  dimensions_analyzed:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: dimensions_analyzed.'
+  downstream_effect_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: downstream_effect_explained.'
+  each_core_claim_has_source_object:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: each_core_claim_has_source_object.'
+  each_question_has_derivation:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: each_question_has_derivation.'
+  each_question_has_method:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: each_question_has_method.'
+  each_question_has_purpose:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: each_question_has_purpose.'
+  each_question_has_why_method:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: each_question_has_why_method.'
+  eight_questions_complete_shell:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: eight_questions_complete_shell.'
+  essence_field_compresses_judgment:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: essence_field_compresses_judgment.'
+  every_claim_has_supporting_fact:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: every_claim_has_supporting_fact.'
+  every_major_section_has_case_specific_content:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: every_major_section_has_case_specific_content.'
+  evidence_ids_available:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: evidence_ids_available.'
+  expression_uses_case_evidence:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: expression_uses_case_evidence.'
+  fact_confidence_a_or_b:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: fact_confidence_a_or_b.'
+  fact_confidence_recorded:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: fact_confidence_recorded.'
+  fact_count_ge_5:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: fact_count_ge_5.'
+  failure_condition_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: failure_condition_explicit.'
+  feedback_loop_closes_system:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: feedback_loop_closes_system.'
+  followup_question_count_ge_2:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: followup_question_count_ge_2.'
+  headings_distinguish_conclusion_reasoning_evidence:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: headings_distinguish_conclusion_reasoning_evidence.'
+  hypotheses_section_separated:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: hypotheses_section_separated.'
+  industry_opinion_section_separated:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: industry_opinion_section_separated.'
+  invalidating_variable_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: invalidating_variable_explicit.'
+  irrelevant_stakeholder_padding_absent:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: irrelevant_stakeholder_padding_absent.'
+  judgment_changed_by_method:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: judgment_changed_by_method.'
+  key_assumption_testable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: key_assumption_testable.'
+  key_insights_highlighted:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: key_insights_highlighted.'
+  long_term_state_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: long_term_state_specific.'
+  material_risk_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: material_risk_identified.'
+  mechanism_chain_ge_3_steps:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: mechanism_chain_ge_3_steps.'
+  mediator_variables_explain_transmission:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: mediator_variables_explain_transmission.'
+  memory_sentence_actionable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: memory_sentence_actionable.'
+  method_chosen_and_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: method_chosen_and_specific.'
+  method_finding_derived:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: method_finding_derived.'
+  method_removed_would_weaken_insight:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: method_removed_would_weaken_insight.'
+  next_step_impact_missing_le_1:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: next_step_impact_missing_le_1.'
+  no_claim_without_evidence:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: no_claim_without_evidence.'
+  no_empty_sections:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: no_empty_sections.'
+  observable_signal_for_each_phase:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: observable_signal_for_each_phase.'
+  one_sentence_insight_actionable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: one_sentence_insight_actionable.'
+  opportunity_change_by_phase:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: opportunity_change_by_phase.'
+  opportunity_judgment_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: opportunity_judgment_case_specific.'
+  original_source_for_core_claim:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: original_source_for_core_claim.'
+  p6_limit_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: p6_limit_explained.'
+  p6_reaction_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: p6_reaction_case_specific.'
+  p6_valid_part_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: p6_valid_part_explained.'
+  p7_start_question_changes_analysis_path:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: p7_start_question_changes_analysis_path.'
+  personal_inference_section_separated:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: personal_inference_section_separated.'
+  phase1_triggered_state:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: phase1_triggered_state.'
+  phase2_triggered_state:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: phase2_triggered_state.'
+  plausible_alternative_judgment_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: plausible_alternative_judgment_explained.'
+  prep_evidence_linked:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: prep_evidence_linked.'
+  prep_point_clear:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: prep_point_clear.'
+  prep_point_reinforced:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: prep_point_reinforced.'
+  prep_reason_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: prep_reason_explained.'
+  prep_scqa_can_be_spoken_in_2min:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: prep_scqa_can_be_spoken_in_2min.'
+  product_or_repo_identified:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: product_or_repo_identified.'
+  push_force_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: push_force_case_specific.'
+  recall_prompt_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: recall_prompt_specific.'
+  recommended_action_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: recommended_action_specific.'
+  relevant_stakeholders_complete:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: relevant_stakeholders_complete.'
+  repeated_sentence_ratio_below_threshold:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: repeated_sentence_ratio_below_threshold.'
+  resistance_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: resistance_case_specific.'
+  result_variables_case_specific_and_measurable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: result_variables_case_specific_and_measurable.'
+  reusable_pattern_with_transfer_boundary:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: reusable_pattern_with_transfer_boundary.'
+  scqa_answer_actionable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: scqa_answer_actionable.'
+  scqa_complication_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: scqa_complication_specific.'
+  scqa_question_case_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: scqa_question_case_specific.'
+  scqa_situation_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: scqa_situation_specific.'
+  secondary_material_collapsible_or_late:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: secondary_material_collapsible_or_late.'
+  sections_follow_reader_order:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: sections_follow_reader_order.'
+  smallest_path_executable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: smallest_path_executable.'
+  source_coverage_sufficient:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_coverage_sufficient.'
+  source_has_title_url_accessed_at:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_has_title_url_accessed_at.'
+  source_is_primary_when_available:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_is_primary_when_available.'
+  source_list_available:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_list_available.'
+  source_quality_not_padded:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_quality_not_padded.'
+  source_title_available:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_title_available.'
+  source_type_classified:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_type_classified.'
+  source_url_traceable:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: source_url_traceable.'
+  stage_conclusion_missing_le_1:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: stage_conclusion_missing_le_1.'
+  stakeholder_constraints_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: stakeholder_constraints_explained.'
+  stakeholder_incentives_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: stakeholder_incentives_explained.'
+  stakeholder_roles_relevant_to_case:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: stakeholder_roles_relevant_to_case.'
+  support_level_per_claim_assigned:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: support_level_per_claim_assigned.'
+  supporting_fact_matches_claim:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: supporting_fact_matches_claim.'
+  supports_claim_how_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: supports_claim_how_explained.'
+  surface_problem_identified_from_case:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: surface_problem_identified_from_case.'
+  timing_relevance_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: timing_relevance_explained.'
+  training_goal_relevance_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: training_goal_relevance_explained.'
+  transfer_boundary_explicit:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: transfer_boundary_explicit.'
+  transfer_target_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: transfer_target_specific.'
+  trigger_for_each_phase:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: trigger_for_each_phase.'
+  uncertain_claims_not_used_as_fact:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: uncertain_claims_not_used_as_fact.'
+  uncertainty_affects_decision:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: uncertainty_affects_decision.'
+  unsupported_parts_disclosed:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: unsupported_parts_disclosed.'
+  use_scenario_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: use_scenario_specific.'
+  user_or_org_scenarios_ge_2:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: user_or_org_scenarios_ge_2.'
+  vague_answer_count_le_1:
+    check_type: heuristic_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: vague_answer_count_le_1.'
+  valid_question_count_ge_7:
+    check_type: machine_check
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: valid_question_count_ge_7.'
+  validation_first_action_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: validation_first_action_specific.'
+  validation_followup_addressed:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: validation_followup_addressed.'
+  validation_metric_measurable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: validation_metric_measurable.'
+  validation_signal_observable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: validation_signal_observable.'
+  validation_test_executable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: validation_test_executable.'
+  value_flow_source_target_explained:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: value_flow_source_target_explained.'
+  watchlist_status_actionable:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: watchlist_status_actionable.'
+  what_happened_specific:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: what_happened_specific.'
+  why_alternative_may_be_true:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: why_alternative_may_be_true.'
+  why_method_used:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: why_method_used.'
+  why_surface_insufficient:
+    check_type: llm_review
+    owner: rubric_v2_1_validator
+    description: 'Rubric objective check: why_surface_insufficient.'

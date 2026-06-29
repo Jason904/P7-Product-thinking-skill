@@ -1,0 +1,15 @@
+sample_id: v6_target
+sample_type: real
+synthetic_fixture: false
+not_real_sample_replay: false
+source_markdown: outputs/daily-training/2026-06-25/training-v6-raw.md
+source_html: outputs/daily-training/2026-06-25/training-v6-reader.html
+source_records:
+- outputs/daily-training/2026-06-25/source-notes-v6.md
+- outputs/daily-training/2026-06-25/training-v6-quality-report.md
+expected_decision: PASS
+expected_publish_allowed: true
+expected_failure_types: []
+expected_caps: {}
+created_from: Historical V6 target Markdown + reader HTML artifact.
+notes: Real target-quality sample used for reader/content completeness comparison.

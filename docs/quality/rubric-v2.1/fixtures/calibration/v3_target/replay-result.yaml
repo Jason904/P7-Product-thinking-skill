@@ -1,0 +1,12 @@
+sample_id: v3_target
+sample_type: real
+actual_decision: PASS
+actual_publish_allowed: true
+reviewer_error_count: 0
+claim_error_count: 0
+failure_object_error_count: 0
+failure_types: []
+reviewer_errors: []
+claim_errors: []
+failure_object_errors: []
+result: OK

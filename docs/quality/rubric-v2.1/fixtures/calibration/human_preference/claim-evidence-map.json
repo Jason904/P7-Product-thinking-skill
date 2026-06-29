@@ -1,0 +1,27 @@
+{
+  "case_id": "case_a",
+  "claims": [
+    {
+      "claim_id": "human_preference_case_a_core_claim_01",
+      "claim_text": "human_preference case_a 的核心判断由可追溯训练稿事实支撑。",
+      "claim_type": "core_judgment",
+      "supporting_facts": [
+        {
+          "fact": "human_preference 历史训练稿包含来源、候选池、深度 case 和推理模块。",
+          "source": {
+            "title": "human_preference historical training artifact",
+            "url": "file://outputs/daily-training/human_preference",
+            "source_type": "official_doc",
+            "published_at": "2026-06-25",
+            "accessed_at": "2026-06-28",
+            "fact_confidence": "A"
+          },
+          "supports_claim_how": "该事实证明 replay payload 绑定的是历史训练产物，而不是临时空构造。"
+        }
+      ],
+      "support_level": "SUFFICIENT",
+      "unsupported_parts": [],
+      "decision_impact": "supports core_judgment"
+    }
+  ]
+}

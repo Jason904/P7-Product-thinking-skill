@@ -1,0 +1,56 @@
+[
+  {
+    "failure_type": "SELF_REVIEW_INFLATION",
+    "decision_state": "FAIL_DAILY",
+    "publish_allowed": false,
+    "repair_action": "request_human_review",
+    "retry_budget": {
+      "max_retries_per_gate": 2,
+      "current_retry_count": 0,
+      "retry_allowed": true
+    },
+    "content_repair_required": false,
+    "content_repair_target": "request_human_review",
+    "system_repair_required": true,
+    "system_repair_target": [
+      "reviewer_prompt",
+      "calibration_set"
+    ],
+    "regression_sample_required": true,
+    "content_changed": false,
+    "html_stale": false,
+    "must_rerender_html": false,
+    "must_rerun_gates": [
+      "human_review"
+    ],
+    "evidence": "Calibration replay expected failure: SELF_REVIEW_INFLATION",
+    "repair_notes": "Generated for calibration replay validation."
+  },
+  {
+    "failure_type": "REVIEW_EVIDENCE_INVALID",
+    "decision_state": "FAIL_DAILY",
+    "publish_allowed": false,
+    "repair_action": "request_human_review",
+    "retry_budget": {
+      "max_retries_per_gate": 2,
+      "current_retry_count": 0,
+      "retry_allowed": true
+    },
+    "content_repair_required": false,
+    "content_repair_target": "request_human_review",
+    "system_repair_required": true,
+    "system_repair_target": [
+      "reviewer_prompt",
+      "calibration_set"
+    ],
+    "regression_sample_required": true,
+    "content_changed": false,
+    "html_stale": false,
+    "must_rerender_html": false,
+    "must_rerun_gates": [
+      "human_review"
+    ],
+    "evidence": "Calibration replay expected failure: REVIEW_EVIDENCE_INVALID",
+    "repair_notes": "Generated for calibration replay validation."
+  }
+]

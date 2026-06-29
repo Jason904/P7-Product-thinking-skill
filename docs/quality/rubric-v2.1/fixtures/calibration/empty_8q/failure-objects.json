@@ -1,0 +1,62 @@
+[
+  {
+    "failure_type": "EMPTY_8Q_REASONING",
+    "decision_state": "FAIL_DAILY",
+    "publish_allowed": false,
+    "repair_action": "rewrite_8q_reasoning",
+    "retry_budget": {
+      "max_retries_per_gate": 2,
+      "current_retry_count": 0,
+      "retry_allowed": true
+    },
+    "content_repair_required": true,
+    "content_repair_target": "rewrite_8q_reasoning",
+    "system_repair_required": true,
+    "system_repair_target": [
+      "reviewer_prompt",
+      "calibration_set"
+    ],
+    "regression_sample_required": true,
+    "content_changed": true,
+    "html_stale": true,
+    "must_rerender_html": true,
+    "must_rerun_gates": [
+      "G5",
+      "G6",
+      "G7",
+      "G8"
+    ],
+    "evidence": "Calibration replay expected failure: EMPTY_8Q_REASONING",
+    "repair_notes": "Generated for calibration replay validation."
+  },
+  {
+    "failure_type": "INCOMPLETE_8Q_FIELDS",
+    "decision_state": "FAIL_DAILY",
+    "publish_allowed": false,
+    "repair_action": "rewrite_8q_reasoning",
+    "retry_budget": {
+      "max_retries_per_gate": 2,
+      "current_retry_count": 0,
+      "retry_allowed": true
+    },
+    "content_repair_required": true,
+    "content_repair_target": "rewrite_8q_reasoning",
+    "system_repair_required": true,
+    "system_repair_target": [
+      "reviewer_prompt",
+      "calibration_set"
+    ],
+    "regression_sample_required": true,
+    "content_changed": true,
+    "html_stale": true,
+    "must_rerender_html": true,
+    "must_rerun_gates": [
+      "G5",
+      "G6",
+      "G7",
+      "G8"
+    ],
+    "evidence": "Calibration replay expected failure: INCOMPLETE_8Q_FIELDS",
+    "repair_notes": "Generated for calibration replay validation."
+  }
+]

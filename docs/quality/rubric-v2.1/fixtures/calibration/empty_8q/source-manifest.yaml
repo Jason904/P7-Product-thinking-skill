@@ -1,0 +1,18 @@
+sample_id: empty_8q
+sample_type: synthetic
+synthetic_fixture: true
+not_real_sample_replay: true
+source_markdown: null
+source_html: null
+source_records: []
+expected_decision:
+- FAIL_DAILY
+- PUBLISH_BLOCK
+expected_publish_allowed: false
+expected_failure_types:
+- EMPTY_8Q_REASONING
+- INCOMPLETE_8Q_FIELDS
+expected_caps:
+  thinking.eightq_reasoning_validity: 0
+created_from: Synthetic negative fixture for empty 8-question shell.
+notes: synthetic_fixture=true; not_real_sample_replay=true.

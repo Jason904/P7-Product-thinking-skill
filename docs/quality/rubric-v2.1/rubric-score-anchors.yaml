@@ -1,0 +1,399 @@
+version: "2.1"
+purpose: "Objective per-item score anchors for Rubric v2.1. Each score is based on observable checks, not adjective-only judgment."
+scoring_rule: "First mark objective_checks from source evidence. Then choose the highest score whose required_checks are all satisfied. Apply evidence caps and deductions after raw_score."
+
+items:
+  thinking.p6_to_p7_reframe:
+    item_name: "P6+ 第一反应到 P7+ 问题意识"
+    primary_account: thinking_depth
+    level: A
+    max_score: 3
+    objective_checks: [p6_reaction_case_specific, p6_valid_part_explained, p6_limit_explained, p7_start_question_changes_analysis_path, downstream_effect_explained]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 p6_reaction_case_specific", observable_rule: "没有写出执行型产品经理会如何第一反应。"}
+      1: {label: "1分", required_checks: [p6_reaction_case_specific], observable_rule: "只写出 P6+ 第一反应。"}
+      2: {label: "2分", required_checks: [p6_reaction_case_specific, p6_valid_part_explained, p6_limit_explained], observable_rule: "能说明这个反应对在哪里、为什么不够。"}
+      3: {label: "3分", required_checks: [p6_reaction_case_specific, p6_valid_part_explained, p6_limit_explained, p7_start_question_changes_analysis_path, downstream_effect_explained], observable_rule: "同时写出 P7+ 起手问题，并说明它如何改变后续分析路径。"}
+    bad_patterns: ["只说不能停留表面但不写第一反应。", "把 P6+ 反应直接判错，没有说明它的合理性。"]
+    full_score_requires: ["P6+ 反应、合理性、不足、P7+ 起手问题都必须出现。", "必须说明这个起手问题如何影响后续分析对象或方法。"]
+    cannot_score_above:
+      - {max_score: 1, when: "没有 p6_valid_part_explained。"}
+      - {max_score: 2, when: "没有 downstream_effect_explained。"}
+
+  thinking.problem_reframing:
+    item_name: "问题重构"
+    primary_account: thinking_depth
+    level: A
+    max_score: 5
+    objective_checks: [surface_problem_identified_from_case, deeper_problem_reframed_from_surface, why_surface_insufficient, case_fact_supports_reframe, action_implication_derived, alternative_reframe_rejected]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 surface_problem_identified_from_case 和 deeper_problem_reframed_from_surface", observable_rule: "只复述事件，没有问题重构。"}
+      1: {label: "1分", required_checks: [surface_problem_identified_from_case], observable_rule: "只命名表层问题。"}
+      2: {label: "2分", required_checks: [surface_problem_identified_from_case, deeper_problem_reframed_from_surface], observable_rule: "提出更深问题，但没有解释为什么。"}
+      3: {label: "3分", required_checks: [surface_problem_identified_from_case, deeper_problem_reframed_from_surface, why_surface_insufficient], observable_rule: "说明表层问题为什么不够。"}
+      4: {label: "4分", required_checks: [surface_problem_identified_from_case, deeper_problem_reframed_from_surface, why_surface_insufficient, case_fact_supports_reframe], observable_rule: "用 case 事实支撑重构。"}
+      5: {label: "5分", required_checks: [surface_problem_identified_from_case, deeper_problem_reframed_from_surface, why_surface_insufficient, case_fact_supports_reframe, action_implication_derived, alternative_reframe_rejected], observable_rule: "重构能导向行动取舍，并排除一个替代重构。"}
+    bad_patterns: ["只写“本质是效率/信任/成本”。", "没有说明重构后要改变什么判断。"]
+    full_score_requires: ["必须有这不是 X 而是 Y 的结构。", "必须说明重构如何改变后续取舍。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 why_surface_insufficient。"}
+      - {max_score: 4, when: "没有 action_implication_derived。"}
+
+  thinking.eightq_reasoning_validity:
+    item_name: "8 问推理有效性"
+    primary_account: thinking_depth
+    level: S
+    max_score: 6
+    objective_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose, each_question_has_method, each_question_has_why_method, each_question_has_derivation, stage_conclusion_missing_le_1, next_step_impact_missing_le_1, continuity_edges_ge_5, vague_answer_count_le_1, boilerplate_count_le_1]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 eight_questions_complete_shell", observable_rule: "8 问不存在或只是标题。"}
+      1: {label: "1分", required_checks: [eight_questions_complete_shell], observable_rule: "有 8 问外壳，但有效字段不足。"}
+      2: {label: "2分", required_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose], observable_rule: "至少 7 问有内容，并写明目的。"}
+      3: {label: "3分", required_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose, each_question_has_method, each_question_has_why_method], observable_rule: "多数问题包含目的、方法和为什么用。"}
+      4: {label: "4分", required_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose, each_question_has_method, each_question_has_why_method, each_question_has_derivation, stage_conclusion_missing_le_1], observable_rule: "有推导过程，阶段结论缺失不超过 1 处。"}
+      5: {label: "5分", required_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose, each_question_has_method, each_question_has_why_method, each_question_has_derivation, stage_conclusion_missing_le_1, next_step_impact_missing_le_1, continuity_edges_ge_5], observable_rule: "形成至少 5 处连续推进关系。"}
+      6: {label: "6分", required_checks: [eight_questions_complete_shell, valid_question_count_ge_7, each_question_has_purpose, each_question_has_method, each_question_has_why_method, each_question_has_derivation, stage_conclusion_missing_le_1, next_step_impact_missing_le_1, continuity_edges_ge_5, vague_answer_count_le_1, boilerplate_count_le_1], observable_rule: "字段完整、连续推进、空泛和套话数量均不超过 1。"}
+    bad_patterns: ["每问都写相同套话。", "只有目录卡片没有推导。"]
+    full_score_requires: ["有效问数不少于 7/8。", "连续推进关系不少于 5 处。"]
+    cannot_score_above:
+      - {max_score: 0, when: "没有 eight_questions_complete_shell。"}
+      - {max_score: 2, when: "valid_question_count_ge_7 不成立。"}
+      - {max_score: 3, when: "continuity_edges_ge_5 不成立。"}
+
+  thinking.causal_mechanism:
+    item_name: "因果机制"
+    primary_account: thinking_depth
+    level: S
+    max_score: 7
+    objective_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission, mechanism_chain_ge_3_steps, push_force_case_specific, resistance_case_specific, feedback_loop_closes_system, counter_mechanism_considered, validation_signal_observable]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 cause_variables_case_specific_and_directional", observable_rule: "只描述现象，没有原因变量。"}
+      1: {label: "1分", required_checks: [cause_variables_case_specific_and_directional], observable_rule: "只命名原因变量。"}
+      2: {label: "2分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable], observable_rule: "写出原因和结果，但没有中介变量。"}
+      3: {label: "3分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission], observable_rule: "写出中介变量，但传导链少于 3 步。"}
+      4: {label: "4分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission, mechanism_chain_ge_3_steps], observable_rule: "形成至少 3 步变量传导链。"}
+      5: {label: "5分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission, mechanism_chain_ge_3_steps, push_force_case_specific, resistance_case_specific], observable_rule: "同时写出推力和阻力。"}
+      6: {label: "6分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission, mechanism_chain_ge_3_steps, push_force_case_specific, resistance_case_specific, feedback_loop_closes_system, counter_mechanism_considered], observable_rule: "包含反馈回路和反向机制。"}
+      7: {label: "7分", required_checks: [cause_variables_case_specific_and_directional, result_variables_case_specific_and_measurable, mediator_variables_explain_transmission, mechanism_chain_ge_3_steps, push_force_case_specific, resistance_case_specific, feedback_loop_closes_system, counter_mechanism_considered, validation_signal_observable], observable_rule: "机制链能落到可验证信号。"}
+    bad_patterns: ["把相关性当因果。", "只说成本下降会带来更多应用。"]
+    full_score_requires: ["必须有至少 3 步变量链。", "必须有推力、阻力、反馈或反向机制、验证信号。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 mediator_variables_explain_transmission。"}
+      - {max_score: 4, when: "没有 resistance_case_specific。"}
+
+  thinking.system_relation_value_flow:
+    item_name: "系统关系与价值流"
+    primary_account: thinking_depth
+    level: A
+    max_score: 5
+    objective_checks: [relevant_stakeholders_complete, irrelevant_stakeholder_padding_absent, stakeholder_roles_relevant_to_case, stakeholder_incentives_explained, stakeholder_constraints_explained, value_flow_source_target_explained, control_point_shift_explained, cost_bearer_identified, beneficiary_identified]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 relevant_stakeholders_complete", observable_rule: "没有系统参与方。"}
+      1: {label: "1分", required_checks: [relevant_stakeholders_complete], observable_rule: "列出至少 4 个参与方。"}
+      2: {label: "2分", required_checks: [relevant_stakeholders_complete, stakeholder_roles_relevant_to_case], observable_rule: "说明参与方角色。"}
+      3: {label: "3分", required_checks: [relevant_stakeholders_complete, stakeholder_roles_relevant_to_case, stakeholder_incentives_explained, stakeholder_constraints_explained], observable_rule: "说明参与方激励和约束。"}
+      4: {label: "4分", required_checks: [relevant_stakeholders_complete, stakeholder_roles_relevant_to_case, stakeholder_incentives_explained, stakeholder_constraints_explained, value_flow_source_target_explained, control_point_shift_explained], observable_rule: "说明价值流向和控制点变化。"}
+      5: {label: "5分", required_checks: [relevant_stakeholders_complete, irrelevant_stakeholder_padding_absent, stakeholder_roles_relevant_to_case, stakeholder_incentives_explained, stakeholder_constraints_explained, value_flow_source_target_explained, control_point_shift_explained, cost_bearer_identified, beneficiary_identified], observable_rule: "明确谁承担成本、谁获得收益，且没有为凑数加入无关参与方。"}
+    bad_patterns: ["只列利益相关者名单。", "没有价值从谁流向谁。"]
+    full_score_requires: ["参与方、激励、约束、价值流、控制点必须出现。", "必须说明成本承担者和收益获得者。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 stakeholder_incentives_explained。"}
+      - {max_score: 3, when: "没有 value_flow_source_target_explained。"}
+
+  thinking.counterfactual_boundary:
+    item_name: "反事实、边界条件与失败条件"
+    primary_account: thinking_depth
+    level: A
+    max_score: 5
+    objective_checks: [plausible_alternative_judgment_explained, why_alternative_may_be_true, dependency_assumptions_explicit, invalidating_variable_explicit, failure_condition_explicit, validation_test_executable, decision_change_rule_explicit]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 plausible_alternative_judgment_explained", observable_rule: "没有反面判断。"}
+      1: {label: "1分", required_checks: [plausible_alternative_judgment_explained], observable_rule: "只命名一个替代判断。"}
+      2: {label: "2分", required_checks: [plausible_alternative_judgment_explained, why_alternative_may_be_true], observable_rule: "说明替代判断为什么可能成立。"}
+      3: {label: "3分", required_checks: [plausible_alternative_judgment_explained, why_alternative_may_be_true, dependency_assumptions_explicit], observable_rule: "列出当前判断依赖的前提。"}
+      4: {label: "4分", required_checks: [plausible_alternative_judgment_explained, why_alternative_may_be_true, dependency_assumptions_explicit, invalidating_variable_explicit, failure_condition_explicit], observable_rule: "说明哪个变量变化会让判断失效。"}
+      5: {label: "5分", required_checks: [plausible_alternative_judgment_explained, why_alternative_may_be_true, dependency_assumptions_explicit, invalidating_variable_explicit, failure_condition_explicit, validation_test_executable, decision_change_rule_explicit], observable_rule: "给出验证测试和结论改变规则。"}
+    bad_patterns: ["把风险清单当反事实。", "只说需要观察。"]
+    full_score_requires: ["必须有替代判断、依赖前提、失效变量。", "必须有验证测试和决策改变规则。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 dependency_assumptions_explicit。"}
+      - {max_score: 4, when: "没有 validation_test_executable。"}
+
+  thinking.trend_projection:
+    item_name: "趋势阶段推演"
+    primary_account: thinking_depth
+    level: A
+    max_score: 4
+    objective_checks: [current_stage_evidence_based, phase1_triggered_state, phase2_triggered_state, long_term_state_specific, trigger_for_each_phase, observable_signal_for_each_phase, opportunity_change_by_phase]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 current_stage_evidence_based", observable_rule: "没有趋势阶段。"}
+      1: {label: "1分", required_checks: [current_stage_evidence_based], observable_rule: "只写当前状态。"}
+      2: {label: "2分", required_checks: [current_stage_evidence_based, phase1_triggered_state, phase2_triggered_state], observable_rule: "有阶段 1 和阶段 2。"}
+      3: {label: "3分", required_checks: [current_stage_evidence_based, phase1_triggered_state, phase2_triggered_state, long_term_state_specific, trigger_for_each_phase], observable_rule: "有长期形态和每阶段触发条件。"}
+      4: {label: "4分", required_checks: [current_stage_evidence_based, phase1_triggered_state, phase2_triggered_state, long_term_state_specific, trigger_for_each_phase, observable_signal_for_each_phase, opportunity_change_by_phase], observable_rule: "每阶段都有可观察信号和机会变化。"}
+    bad_patterns: ["只写未来会增长。", "阶段只有标题没有触发条件。"]
+    full_score_requires: ["必须有现在、阶段 1、阶段 2、长期形态。", "必须有触发条件、观察信号和机会变化。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 long_term_state_specific。"}
+      - {max_score: 3, when: "没有 observable_signal_for_each_phase。"}
+
+  thinking.final_tradeoff_validation:
+    item_name: "最终取舍与验证路径"
+    primary_account: thinking_depth
+    level: S
+    max_score: 5
+    objective_checks: [recommended_action_specific, avoided_action_specific, validation_first_action_specific, key_assumption_testable, validation_metric_measurable, smallest_path_executable, material_risk_identified, decision_rule_explicit]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 recommended_action_specific", observable_rule: "没有最终行动判断。"}
+      1: {label: "1分", required_checks: [recommended_action_specific], observable_rule: "只有建议做什么。"}
+      2: {label: "2分", required_checks: [recommended_action_specific, avoided_action_specific], observable_rule: "写出做和不做。"}
+      3: {label: "3分", required_checks: [recommended_action_specific, avoided_action_specific, validation_first_action_specific, key_assumption_testable], observable_rule: "写出先验证和关键假设。"}
+      4: {label: "4分", required_checks: [recommended_action_specific, avoided_action_specific, validation_first_action_specific, key_assumption_testable, validation_metric_measurable, smallest_path_executable], observable_rule: "写出验证指标和最小路径。"}
+      5: {label: "5分", required_checks: [recommended_action_specific, avoided_action_specific, validation_first_action_specific, key_assumption_testable, validation_metric_measurable, smallest_path_executable, material_risk_identified, decision_rule_explicit], observable_rule: "写出风险和验证后如何改变决策。"}
+    bad_patterns: ["只写值得关注。", "把方案列表当取舍。"]
+    full_score_requires: ["做、不做、先验证必须同时出现。", "必须有指标、最小路径、风险和决策规则。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 validation_first_action_specific。"}
+      - {max_score: 4, when: "没有 decision_rule_explicit。"}
+
+  thinking.method_insight_generation:
+    item_name: "分析方法产生洞察"
+    primary_account: thinking_depth
+    level: A
+    max_score: 5
+    objective_checks: [method_chosen_and_specific, why_method_used, dimensions_analyzed, derivation_shown, method_finding_derived, judgment_changed_by_method, method_removed_would_weaken_insight]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 method_chosen_and_specific", observable_rule: "没有分析方法或只有空标题。"}
+      1: {label: "1分", required_checks: [method_chosen_and_specific], observable_rule: "只出现方法名。"}
+      2: {label: "2分", required_checks: [method_chosen_and_specific, why_method_used], observable_rule: "说明为什么用这个方法。"}
+      3: {label: "3分", required_checks: [method_chosen_and_specific, why_method_used, dimensions_analyzed, derivation_shown], observable_rule: "展示分析维度和推导过程。"}
+      4: {label: "4分", required_checks: [method_chosen_and_specific, why_method_used, dimensions_analyzed, derivation_shown, method_finding_derived, judgment_changed_by_method], observable_rule: "方法产生发现并改变判断。"}
+      5: {label: "5分", required_checks: [method_chosen_and_specific, why_method_used, dimensions_analyzed, derivation_shown, method_finding_derived, judgment_changed_by_method, method_removed_would_weaken_insight], observable_rule: "能证明删除该方法会削弱 Insight。"}
+    bad_patterns: ["堆砌方法名。", "方法删掉后不影响结论。"]
+    full_score_requires: ["必须有方法、使用原因、维度、推导、发现。", "必须说明方法如何改变判断。"]
+    cannot_score_above:
+      - {max_score: 1, when: "没有 why_method_used。"}
+      - {max_score: 3, when: "没有 judgment_changed_by_method。"}
+
+  content.fact_support_core_claim:
+    item_name: "核心判断事实支撑"
+    primary_account: content_quality
+    level: S
+    max_score: 8
+    objective_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim, supporting_fact_matches_claim, supports_claim_how_explained, unsupported_parts_disclosed, source_is_primary_when_available, claim_boundary_affects_decision]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 core_claim_count_1_to_3", observable_rule: "没有核心判断证据绑定。"}
+      1: {label: "1分", required_checks: [core_claim_count_1_to_3], observable_rule: "有核心判断，但没有 source object。"}
+      2: {label: "2分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object], observable_rule: "每个核心判断有 source object，但字段不完整。"}
+      3: {label: "3分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at], observable_rule: "来源对象有 title、url、accessed_at。"}
+      4: {label: "4分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim], observable_rule: "核心判断不用 C/D 事实支撑。"}
+      5: {label: "5分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim, supporting_fact_matches_claim], observable_rule: "supporting fact 与 claim 对应。"}
+      6: {label: "6分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim, supporting_fact_matches_claim, supports_claim_how_explained], observable_rule: "写明事实如何支撑判断。"}
+      7: {label: "7分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim, supporting_fact_matches_claim, supports_claim_how_explained, unsupported_parts_disclosed, source_is_primary_when_available], observable_rule: "标注未支撑部分，并优先使用一手来源。"}
+      8: {label: "8分", required_checks: [core_claim_count_1_to_3, each_core_claim_has_source_object, source_has_title_url_accessed_at, fact_confidence_a_or_b, c_or_d_not_used_for_core_claim, supporting_fact_matches_claim, supports_claim_how_explained, unsupported_parts_disclosed, source_is_primary_when_available, claim_boundary_affects_decision], observable_rule: "证据边界会影响最终判断或取舍。"}
+    bad_patterns: ["AI HOT 或媒体摘要直接当最终事实。", "有来源表但没有 supports_claim_how。"]
+    full_score_requires: ["核心判断必须由 A/B 事实支撑。", "必须有 source object 和 unsupported_parts。"]
+    cannot_score_above:
+      - {max_score: 2, when: "核心判断依赖 C/D 事实。"}
+      - {max_score: 5, when: "没有 supports_claim_how_explained。"}
+
+  content.source_traceability:
+    item_name: "来源可追溯性"
+    primary_account: content_quality
+    level: A
+    max_score: 5
+    objective_checks: [source_list_available, source_title_available, source_url_traceable, source_type_classified, accessed_at_recorded, fact_confidence_recorded, original_source_for_core_claim, ai_hot_if_used_marked_signal_only]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 source_list_available", observable_rule: "没有来源列表。"}
+      1: {label: "1分", required_checks: [source_list_available], observable_rule: "只有来源名称。"}
+      2: {label: "2分", required_checks: [source_list_available, source_title_available, source_url_traceable], observable_rule: "来源有标题和 URL。"}
+      3: {label: "3分", required_checks: [source_list_available, source_title_available, source_url_traceable, source_type_classified, accessed_at_recorded], observable_rule: "来源类型和访问时间齐全。"}
+      4: {label: "4分", required_checks: [source_list_available, source_title_available, source_url_traceable, source_type_classified, accessed_at_recorded, fact_confidence_recorded, original_source_for_core_claim], observable_rule: "核心判断追溯到原始来源。"}
+      5: {label: "5分", required_checks: [source_list_available, source_title_available, source_url_traceable, source_type_classified, accessed_at_recorded, fact_confidence_recorded, original_source_for_core_claim, ai_hot_if_used_marked_signal_only], observable_rule: "AI HOT 被标注为信号源而非最终事实。"}
+    bad_patterns: ["只写 OpenAI/GitHub/AI HOT。", "二手来源冒充官方来源。"]
+    full_score_requires: ["核心事实必须能打开原文。", "必须区分 official、github、paper、media、ai_hot、community。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 accessed_at_recorded。"}
+      - {max_score: 3, when: "没有 original_source_for_core_claim。"}
+
+  content.case_specificity_context:
+    item_name: "Case 具体性与上下文密度"
+    primary_account: content_quality
+    level: A
+    max_score: 5
+    objective_checks: [what_happened_specific, actor_identified, product_or_repo_identified, date_or_release_context_specific, affected_user_or_org_identified, use_scenario_specific, timing_relevance_explained, training_goal_relevance_explained]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 what_happened_specific", observable_rule: "读者不知道发生了什么。"}
+      1: {label: "1分", required_checks: [what_happened_specific], observable_rule: "只写发生了什么。"}
+      2: {label: "2分", required_checks: [what_happened_specific, actor_identified, product_or_repo_identified], observable_rule: "写出主体和产品/仓库。"}
+      3: {label: "3分", required_checks: [what_happened_specific, actor_identified, product_or_repo_identified, date_or_release_context_specific, affected_user_or_org_identified], observable_rule: "有时间/发布背景和受影响对象。"}
+      4: {label: "4分", required_checks: [what_happened_specific, actor_identified, product_or_repo_identified, date_or_release_context_specific, affected_user_or_org_identified, use_scenario_specific, timing_relevance_explained], observable_rule: "有具体场景和为什么现在重要。"}
+      5: {label: "5分", required_checks: [what_happened_specific, actor_identified, product_or_repo_identified, date_or_release_context_specific, affected_user_or_org_identified, use_scenario_specific, timing_relevance_explained, training_goal_relevance_explained], observable_rule: "说明与当天训练目标的关系。"}
+    bad_patterns: ["只有标题和宏观背景。", "读者无法判断为什么值得分析。"]
+    full_score_requires: ["必须回答发生了什么、谁受影响、在哪个场景。", "必须说明与训练目标的关系。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 affected_user_or_org_identified。"}
+      - {max_score: 3, when: "没有 use_scenario_specific。"}
+
+  content.claim_evidence_alignment:
+    item_name: "论点与证据对齐"
+    primary_account: content_quality
+    level: S
+    max_score: 5
+    objective_checks: [claim_ids_available, evidence_ids_available, every_claim_has_supporting_fact, supports_claim_how_explained, unsupported_parts_disclosed, support_level_per_claim_assigned, no_claim_without_evidence]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 claim_ids_available", observable_rule: "没有可追踪 claim。"}
+      1: {label: "1分", required_checks: [claim_ids_available], observable_rule: "只有 claim，没有证据 ID。"}
+      2: {label: "2分", required_checks: [claim_ids_available, evidence_ids_available], observable_rule: "claim 和 evidence 都存在，但没有绑定。"}
+      3: {label: "3分", required_checks: [claim_ids_available, evidence_ids_available, every_claim_has_supporting_fact], observable_rule: "每个 claim 至少有一个 supporting fact。"}
+      4: {label: "4分", required_checks: [claim_ids_available, evidence_ids_available, every_claim_has_supporting_fact, supports_claim_how_explained, support_level_per_claim_assigned], observable_rule: "说明支撑方式和每个 claim 的支持等级。"}
+      5: {label: "5分", required_checks: [claim_ids_available, evidence_ids_available, every_claim_has_supporting_fact, supports_claim_how_explained, unsupported_parts_disclosed, support_level_per_claim_assigned, no_claim_without_evidence], observable_rule: "没有无证据 claim，并标注未支撑部分。"}
+    bad_patterns: ["先给结论再堆链接。", "事实只能证明事件存在，不能证明判断。"]
+    full_score_requires: ["必须有 Claim Evidence Map。", "每个核心 claim 必须有 support_level 和 unsupported_parts。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 every_claim_has_supporting_fact。"}
+      - {max_score: 3, when: "没有 supports_claim_how_explained。"}
+
+  content.uncertainty_boundary:
+    item_name: "不确定性边界"
+    primary_account: content_quality
+    level: A
+    max_score: 3
+    objective_checks: [confirmed_facts_section_separated, industry_opinion_section_separated, personal_inference_section_separated, hypotheses_section_separated, uncertain_claims_not_used_as_fact, uncertainty_affects_decision]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 confirmed_facts_section_separated", observable_rule: "事实、观点、推断、假设混在一起。"}
+      1: {label: "1分", required_checks: [confirmed_facts_section_separated, hypotheses_section_separated], observable_rule: "至少区分事实和假设。"}
+      2: {label: "2分", required_checks: [confirmed_facts_section_separated, industry_opinion_section_separated, personal_inference_section_separated, hypotheses_section_separated, uncertain_claims_not_used_as_fact], observable_rule: "四类边界齐全，且不把不确定内容当事实。"}
+      3: {label: "3分", required_checks: [confirmed_facts_section_separated, industry_opinion_section_separated, personal_inference_section_separated, hypotheses_section_separated, uncertain_claims_not_used_as_fact, uncertainty_affects_decision], observable_rule: "不确定性会影响取舍或验证优先级。"}
+    bad_patterns: ["用确定语气陈述未经验证的商业结果。", "AI HOT 摘要被升级为事实。"]
+    full_score_requires: ["必须有四类事实边界。", "必须说明不确定性如何影响决策。"]
+    cannot_score_above:
+      - {max_score: 1, when: "缺少四类边界中的两类以上。"}
+      - {max_score: 2, when: "没有 uncertainty_affects_decision。"}
+
+  content.information_density:
+    item_name: "信息密度"
+    primary_account: content_quality
+    level: B
+    max_score: 4
+    objective_checks: [fact_count_ge_5, source_coverage_sufficient, source_quality_not_padded, case_specific_variables_ge_4, user_or_org_scenarios_ge_2, repeated_sentence_ratio_below_threshold, every_major_section_has_case_specific_content]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 fact_count_ge_5", observable_rule: "事实数量不足 5 个。"}
+      1: {label: "1分", required_checks: [fact_count_ge_5], observable_rule: "事实数量够，但来源和变量不足。"}
+      2: {label: "2分", required_checks: [fact_count_ge_5, source_coverage_sufficient, case_specific_variables_ge_4], observable_rule: "来源覆盖足够且有 4 个 case 变量。"}
+      3: {label: "3分", required_checks: [fact_count_ge_5, source_coverage_sufficient, case_specific_variables_ge_4, user_or_org_scenarios_ge_2, repeated_sentence_ratio_below_threshold], observable_rule: "有至少 2 个用户/组织场景且重复率不过高。"}
+      4: {label: "4分", required_checks: [fact_count_ge_5, source_coverage_sufficient, source_quality_not_padded, case_specific_variables_ge_4, user_or_org_scenarios_ge_2, repeated_sentence_ratio_below_threshold, every_major_section_has_case_specific_content], observable_rule: "每个主要模块都有 case-specific 内容，且没有低质量来源凑数。"}
+    bad_patterns: ["大量抽象形容词。", "同一句判断重复填充篇幅。"]
+    full_score_requires: ["事实、来源、变量、场景都有数量底线。", "每个主要模块都必须服务当前 case。"]
+    cannot_score_above:
+      - {max_score: 1, when: "source_coverage_sufficient 不成立。"}
+      - {max_score: 2, when: "user_or_org_scenarios_ge_2 不成立。"}
+
+  expression.conclusion_first:
+    item_name: "结论先行"
+    primary_account: expression_quality
+    level: A
+    max_score: 4
+    objective_checks: [one_sentence_insight_actionable, conclusion_before_detail, contrastive_judgment_case_specific, opportunity_judgment_case_specific, conclusion_links_to_action]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 one_sentence_insight_actionable", observable_rule: "没有一句话核心判断。"}
+      1: {label: "1分", required_checks: [one_sentence_insight_actionable], observable_rule: "有一句话 Insight。"}
+      2: {label: "2分", required_checks: [one_sentence_insight_actionable, conclusion_before_detail], observable_rule: "结论出现在细节之前。"}
+      3: {label: "3分", required_checks: [one_sentence_insight_actionable, conclusion_before_detail, contrastive_judgment_case_specific], observable_rule: "包含这不是 X 而是 Y 的判断。"}
+      4: {label: "4分", required_checks: [one_sentence_insight_actionable, conclusion_before_detail, contrastive_judgment_case_specific, opportunity_judgment_case_specific, conclusion_links_to_action], observable_rule: "结论同时包含机会方向和行动指向。"}
+    bad_patterns: ["结论藏在最后。", "只写值得关注。"]
+    full_score_requires: ["必须先给一句话 Insight。", "必须连接行动判断。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 contrastive_judgment_case_specific。"}
+      - {max_score: 3, when: "没有 conclusion_links_to_action。"}
+
+  expression.structure_readability:
+    item_name: "结构与可读性"
+    primary_account: expression_quality
+    level: B
+    max_score: 4
+    objective_checks: [sections_follow_reader_order, headings_distinguish_conclusion_reasoning_evidence, key_insights_highlighted, secondary_material_collapsible_or_late, no_empty_sections, anchors_match_sections]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 sections_follow_reader_order", observable_rule: "结构不按阅读顺序组织。"}
+      1: {label: "1分", required_checks: [sections_follow_reader_order], observable_rule: "有阅读顺序。"}
+      2: {label: "2分", required_checks: [sections_follow_reader_order, headings_distinguish_conclusion_reasoning_evidence], observable_rule: "标题区分结论、推理、证据。"}
+      3: {label: "3分", required_checks: [sections_follow_reader_order, headings_distinguish_conclusion_reasoning_evidence, key_insights_highlighted, no_empty_sections], observable_rule: "关键结论突出且没有空模块。"}
+      4: {label: "4分", required_checks: [sections_follow_reader_order, headings_distinguish_conclusion_reasoning_evidence, key_insights_highlighted, secondary_material_collapsible_or_late, no_empty_sections, anchors_match_sections], observable_rule: "次要材料不抢主线，导航锚点准确。"}
+    bad_patterns: ["标题不像标题，标签不像标签。", "重要结论和普通正文混在一起。"]
+    full_score_requires: ["必须让读者先看结论，再看证据和推理。", "锚点必须跳到真实模块。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 key_insights_highlighted。"}
+      - {max_score: 3, when: "anchors_match_sections 不成立。"}
+
+  expression.prep_scqa_quality:
+    item_name: "PREP / SCQA 表达质量"
+    primary_account: expression_quality
+    level: B
+    max_score: 5
+    objective_checks: [prep_point_clear, prep_reason_explained, prep_evidence_linked, prep_point_reinforced, scqa_situation_specific, scqa_complication_specific, scqa_question_case_specific, scqa_answer_actionable, expression_uses_case_evidence, prep_scqa_can_be_spoken_in_2min]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 prep_point_clear 和 scqa_situation_specific", observable_rule: "没有 PREP/SCQA。"}
+      1: {label: "1分", required_checks: [prep_point_clear, scqa_situation_specific], observable_rule: "PREP/SCQA 只有起始字段。"}
+      2: {label: "2分", required_checks: [prep_point_clear, prep_reason_explained, scqa_situation_specific, scqa_complication_specific], observable_rule: "有基本理由和冲突。"}
+      3: {label: "3分", required_checks: [prep_point_clear, prep_reason_explained, prep_evidence_linked, scqa_situation_specific, scqa_complication_specific, scqa_question_case_specific], observable_rule: "有证据和 SCQ。"}
+      4: {label: "4分", required_checks: [prep_point_clear, prep_reason_explained, prep_evidence_linked, prep_point_reinforced, scqa_situation_specific, scqa_complication_specific, scqa_question_case_specific, scqa_answer_actionable, expression_uses_case_evidence], observable_rule: "PREP/SCQA 完整且使用 case 证据。"}
+      5: {label: "5分", required_checks: [prep_point_clear, prep_reason_explained, prep_evidence_linked, prep_point_reinforced, scqa_situation_specific, scqa_complication_specific, scqa_question_case_specific, scqa_answer_actionable, expression_uses_case_evidence, prep_scqa_can_be_spoken_in_2min], observable_rule: "表达能承接追问。"}
+    bad_patterns: ["只有结论没有证据。", "SCQA 的问题不是当前 case 的真实问题。"]
+    full_score_requires: ["PREP 四段和 SCQA 四段必须齐全。", "表达必须使用 case 证据并能承接追问。"]
+    cannot_score_above:
+      - {max_score: 2, when: "缺少 prep_evidence_linked。"}
+      - {max_score: 3, when: "缺少 scqa_answer_actionable。"}
+
+  expression.interview_followup_resilience:
+    item_name: "被追问承接能力"
+    primary_account: expression_quality
+    level: A
+    max_score: 4
+    objective_checks: [followup_question_count_ge_2, counterargument_followup_addressed, validation_followup_addressed, answer_uses_fact_or_mechanism, answer_names_boundary_or_condition, answer_updates_decision_if_needed]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 followup_question_count_ge_2", observable_rule: "没有至少 2 个追问。"}
+      1: {label: "1分", required_checks: [followup_question_count_ge_2], observable_rule: "有至少 2 个追问。"}
+      2: {label: "2分", required_checks: [followup_question_count_ge_2, counterargument_followup_addressed, validation_followup_addressed], observable_rule: "追问覆盖反驳和验证。"}
+      3: {label: "3分", required_checks: [followup_question_count_ge_2, counterargument_followup_addressed, validation_followup_addressed, answer_uses_fact_or_mechanism, answer_names_boundary_or_condition], observable_rule: "回答使用事实/机制，并说明边界。"}
+      4: {label: "4分", required_checks: [followup_question_count_ge_2, counterargument_followup_addressed, validation_followup_addressed, answer_uses_fact_or_mechanism, answer_names_boundary_or_condition, answer_updates_decision_if_needed], observable_rule: "回答说明何时更新决策。"}
+    bad_patterns: ["追问回应只是重复结论。", "只说需要更多数据。"]
+    full_score_requires: ["至少有反驳型和验证型追问。", "必须说明边界和决策更新条件。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 answer_uses_fact_or_mechanism。"}
+      - {max_score: 3, when: "没有 answer_updates_decision_if_needed。"}
+
+  expression.case_asset_card_transfer:
+    item_name: "Case Asset Card 可迁移性"
+    primary_account: expression_quality
+    level: B
+    max_score: 5
+    objective_checks: [asset_card_structured, essence_field_compresses_judgment, asset_card_inherits_core_judgment, asset_card_compresses_without_distortion, reusable_pattern_with_transfer_boundary, transfer_target_specific, transfer_boundary_explicit, watchlist_status_actionable, asset_grade_with_reason_supported, recall_prompt_specific]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 asset_card_structured", observable_rule: "没有资产卡。"}
+      1: {label: "1分", required_checks: [asset_card_structured, essence_field_compresses_judgment], observable_rule: "资产卡有本质字段。"}
+      2: {label: "2分", required_checks: [asset_card_structured, essence_field_compresses_judgment, asset_card_inherits_core_judgment, asset_card_compresses_without_distortion], observable_rule: "包含核心矛盾和系统关系。"}
+      3: {label: "3分", required_checks: [asset_card_structured, essence_field_compresses_judgment, asset_card_inherits_core_judgment, asset_card_compresses_without_distortion, reusable_pattern_with_transfer_boundary, transfer_boundary_explicit], observable_rule: "包含价值流和取舍。"}
+      4: {label: "4分", required_checks: [asset_card_structured, essence_field_compresses_judgment, asset_card_inherits_core_judgment, asset_card_compresses_without_distortion, reusable_pattern_with_transfer_boundary, transfer_boundary_explicit, reusable_pattern_with_transfer_boundary, transfer_target_specific], observable_rule: "包含 Pattern 和迁移对象。"}
+      5: {label: "5分", required_checks: [asset_card_structured, essence_field_compresses_judgment, asset_card_inherits_core_judgment, asset_card_compresses_without_distortion, reusable_pattern_with_transfer_boundary, transfer_target_specific, transfer_boundary_explicit, watchlist_status_actionable, asset_grade_with_reason_supported, recall_prompt_specific], observable_rule: "包含 Watchlist 和资产等级理由。"}
+    bad_patterns: ["资产卡只是正文摘要。", "没有迁移对象或资产等级理由。"]
+    full_score_requires: ["必须包含 Pattern、迁移对象、Watchlist、资产等级理由。", "必须能进入个人知识库或面试素材库。"]
+    cannot_score_above:
+      - {max_score: 2, when: "没有 reusable_pattern_with_transfer_boundary。"}
+      - {max_score: 3, when: "没有 reusable_pattern_with_transfer_boundary。"}
+
+  expression.memory_point_pattern:
+    item_name: "记忆点与 Pattern"
+    primary_account: expression_quality
+    level: B
+    max_score: 3
+    objective_checks: [memory_sentence_actionable, reusable_pattern_with_transfer_boundary, applicable_use_scenario_specific, transfer_boundary_explicit, recall_prompt_specific]
+    score_anchors:
+      0: {label: "0分", required_checks: [], failure_if: "缺少 memory_sentence_actionable", observable_rule: "没有记忆句。"}
+      1: {label: "1分", required_checks: [memory_sentence_actionable], observable_rule: "有一句记忆句。"}
+      2: {label: "2分", required_checks: [memory_sentence_actionable, reusable_pattern_with_transfer_boundary, applicable_use_scenario_specific], observable_rule: "有 Pattern 和适用场景。"}
+      3: {label: "3分", required_checks: [memory_sentence_actionable, reusable_pattern_with_transfer_boundary, applicable_use_scenario_specific, transfer_boundary_explicit, recall_prompt_specific], observable_rule: "有迁移边界和复习提示。"}
+    bad_patterns: ["漂亮但空泛的金句。", "Pattern 只能用于当前 case。"]
+    full_score_requires: ["必须有可复述 Pattern。", "必须有适用场景、迁移边界和复习提示。"]
+    cannot_score_above:
+      - {max_score: 1, when: "没有 reusable_pattern_with_transfer_boundary。"}
+      - {max_score: 2, when: "没有 transfer_boundary_explicit。"}

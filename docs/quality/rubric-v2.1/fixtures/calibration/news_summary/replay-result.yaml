@@ -1,0 +1,13 @@
+sample_id: news_summary
+sample_type: synthetic
+actual_decision: FAIL_DAILY
+actual_publish_allowed: false
+reviewer_error_count: 0
+claim_error_count: 0
+failure_object_error_count: 0
+failure_types:
+- NEWS_SUMMARY_ONLY
+reviewer_errors: []
+claim_errors: []
+failure_object_errors: []
+result: OK

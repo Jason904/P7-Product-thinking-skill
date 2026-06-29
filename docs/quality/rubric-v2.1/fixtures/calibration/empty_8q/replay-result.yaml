@@ -1,0 +1,14 @@
+sample_id: empty_8q
+sample_type: synthetic
+actual_decision: PUBLISH_BLOCK
+actual_publish_allowed: false
+reviewer_error_count: 0
+claim_error_count: 0
+failure_object_error_count: 0
+failure_types:
+- EMPTY_8Q_REASONING
+- INCOMPLETE_8Q_FIELDS
+reviewer_errors: []
+claim_errors: []
+failure_object_errors: []
+result: OK

@@ -1,0 +1,14 @@
+sample_id: human_preference
+sample_type: synthetic
+synthetic_fixture: true
+not_real_sample_replay: true
+source_markdown: null
+source_html: null
+source_records: []
+expected_decision: USER_REVIEW_REQUIRED
+expected_publish_allowed: false
+expected_failure_types: []
+expected_caps: {}
+created_from: Synthetic preference-boundary fixture.
+notes: synthetic_fixture=true; not_real_sample_replay=true; only the user can resolve
+  this decision.

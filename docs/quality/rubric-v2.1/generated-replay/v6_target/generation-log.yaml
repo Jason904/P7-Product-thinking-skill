@@ -1,0 +1,45 @@
+sample_id: v6_target
+created_at: '2026-06-29T04:34:24+00:00'
+prompt_version: p2a-recorded-generator-v1
+generation_method: recorded_fixture_replay
+recorded_generation: true
+not_live_llm_review: true
+input_files:
+- path: outputs/daily-training/2026-06-25/training-v6-raw.md
+  exists: true
+  role: training_markdown
+  bytes: 106434
+  sha256: 978b4ac52d6b2cf4017a7d6cae158b7c3838a55c94b8776025ffd962ff5b388a
+- path: outputs/daily-training/2026-06-25/training-v6-reader.html
+  exists: true
+  role: reader_html
+  bytes: 366503
+  sha256: e7dfd59f6fe8356f7f361e9b81199016f1b1052228c98674d147652b4e3d8f0d
+- path: outputs/daily-training/2026-06-25/source-notes-v6.md
+  exists: true
+  role: source_record_or_audit
+  bytes: 3450
+  sha256: f377d98eb6382eb989e467e3c3e787b5f3697851ac9f731ceb182ceba10b0d90
+- path: outputs/daily-training/2026-06-25/training-v6-quality-report.md
+  exists: true
+  role: source_record_or_audit
+  bytes: 12166
+  sha256: 94b14e96ff51e9fbd15796d3d08fe5efc4062a12133cdfc602ea5f422b902356
+rubric_dir: docs/quality/rubric-v2.1
+fixture_dir: docs/quality/rubric-v2.1/fixtures/calibration/v6_target
+output_paths:
+  reviewer_output_path: docs/quality/rubric-v2.1/generated-replay/v6_target/reviewer-output.json
+  claim_evidence_map_path: docs/quality/rubric-v2.1/generated-replay/v6_target/claim-evidence-map.json
+  failure_objects_path: docs/quality/rubric-v2.1/generated-replay/v6_target/failure-objects.json
+  generation_log_path: docs/quality/rubric-v2.1/generated-replay/v6_target/generation-log.yaml
+  validator_result_path: docs/quality/rubric-v2.1/generated-replay/v6_target/validator-result.yaml
+validator_result:
+  validator_status: PASS
+  reviewer_error_count: 0
+  claim_evidence_map_error_count: 0
+  failure_object_error_count: 0
+self_review_policy:
+  rule_id: self_review_is_subject_not_authority
+  ignored_as_release_evidence: true
+  note: Insight Quality Audit / self-review text is treated as reviewed content, never
+    as a release authority.

@@ -1,0 +1,30 @@
+sample_id: v3_target
+created_at: '2026-06-29T04:34:24+00:00'
+prompt_version: p2a-recorded-generator-v1
+generation_method: recorded_fixture_replay
+recorded_generation: true
+not_live_llm_review: true
+input_files:
+- path: outputs/daily-training/2026-06-25/training-v3.md
+  exists: true
+  role: training_markdown
+  bytes: 120784
+  sha256: 65205968e1628a2363ecf4053aa901badca0ac79b3ec20e72f141761e02759a6
+rubric_dir: docs/quality/rubric-v2.1
+fixture_dir: docs/quality/rubric-v2.1/fixtures/calibration/v3_target
+output_paths:
+  reviewer_output_path: docs/quality/rubric-v2.1/generated-replay/v3_target/reviewer-output.json
+  claim_evidence_map_path: docs/quality/rubric-v2.1/generated-replay/v3_target/claim-evidence-map.json
+  failure_objects_path: docs/quality/rubric-v2.1/generated-replay/v3_target/failure-objects.json
+  generation_log_path: docs/quality/rubric-v2.1/generated-replay/v3_target/generation-log.yaml
+  validator_result_path: docs/quality/rubric-v2.1/generated-replay/v3_target/validator-result.yaml
+validator_result:
+  validator_status: PASS
+  reviewer_error_count: 0
+  claim_evidence_map_error_count: 0
+  failure_object_error_count: 0
+self_review_policy:
+  rule_id: self_review_is_subject_not_authority
+  ignored_as_release_evidence: true
+  note: Insight Quality Audit / self-review text is treated as reviewed content, never
+    as a release authority.

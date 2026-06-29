@@ -1,0 +1,20 @@
+sample_id: v7_failure
+sample_type: real
+actual_decision: FAIL_DAILY
+actual_publish_allowed: false
+reviewer_error_count: 3
+claim_error_count: 0
+failure_object_error_count: 0
+failure_types:
+- EMPTY_8Q_REASONING
+- DISCONNECTED_8Q_CHAIN
+- BOILERPLATE_REASONING
+- CASE_DEPTH_IMBALANCE
+- REVIEW_EVIDENCE_INVALID
+reviewer_errors:
+- case_reviews[1].item_reviews[2].final_score exceeds active item cap 0
+- case_reviews[1].item_reviews[2].final_score exceeds MISSING evidence cap 0
+- case_reviews[1].item_reviews[2].final_score must be 0 when item_evidence_sufficiency=MISSING
+claim_errors: []
+failure_object_errors: []
+result: OK

@@ -1,0 +1,16 @@
+sample_id: news_summary
+sample_type: synthetic
+synthetic_fixture: true
+not_real_sample_replay: true
+source_markdown: null
+source_html: null
+source_records: []
+expected_decision:
+- FAIL_DAILY
+expected_publish_allowed: false
+expected_failure_types:
+- NEWS_SUMMARY_ONLY
+expected_caps:
+  global_cap: 70
+created_from: Synthetic negative fixture for news-summary-only output.
+notes: synthetic_fixture=true; not_real_sample_replay=true.

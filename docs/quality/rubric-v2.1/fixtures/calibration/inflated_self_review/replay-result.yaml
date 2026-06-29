@@ -1,0 +1,14 @@
+sample_id: inflated_self_review
+sample_type: synthetic
+actual_decision: FAIL_DAILY
+actual_publish_allowed: false
+reviewer_error_count: 0
+claim_error_count: 0
+failure_object_error_count: 0
+failure_types:
+- SELF_REVIEW_INFLATION
+- REVIEW_EVIDENCE_INVALID
+reviewer_errors: []
+claim_errors: []
+failure_object_errors: []
+result: OK

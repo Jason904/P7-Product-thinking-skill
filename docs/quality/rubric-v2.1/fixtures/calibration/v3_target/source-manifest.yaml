@@ -1,0 +1,15 @@
+sample_id: v3_target
+sample_type: real
+synthetic_fixture: false
+not_real_sample_replay: false
+source_markdown: outputs/daily-training/2026-06-25/training-v3.md
+source_html: null
+source_records:
+- outputs/daily-training/2026-06-25/training-v3.md
+expected_decision: PASS
+expected_publish_allowed: true
+expected_failure_types: []
+expected_caps: {}
+created_from: Historical V3 target Markdown artifact.
+notes: Real historical target-quality content sample; no dedicated V3 HTML/source-notes
+  file exists in repo.

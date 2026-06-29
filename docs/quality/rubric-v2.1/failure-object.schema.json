@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hermes/failure-object.schema.json",
+  "title": "Rubric v2.1 Failure Object",
+  "type": "object",
+  "additionalProperties": false,
+  "x_enum_source": "rubric-enums.yaml",
+  "x_formula_checks": [
+    "decision_state represents current review status",
+    "repair_action represents next repair action",
+    "publish_allowed represents release permission",
+    "FAIL_DAILY can still allow retry when retry_budget.retry_allowed is true",
+    "content_changed implies html_stale and must_rerender_html",
+    "if reviewer_output_valid is false then publish_allowed must be false",
+    "if HTML_CONTENT_LOSS then decision_state must be PUBLISH_BLOCK"
+  ],
+  "required": [
+    "failure_type",
+    "decision_state",
+    "publish_allowed",
+    "repair_action",
+    "retry_budget",
+    "content_repair_required",
+    "content_repair_target",
+    "system_repair_required",
+    "system_repair_target",
+    "regression_sample_required",
+    "content_changed",
+    "html_stale",
+    "must_rerender_html",
+    "must_rerun_gates"
+  ],
+  "properties": {
+    "failure_type": {
+      "type": "string"
+    },
+    "decision_state": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "PASS_WITH_MINOR_REPAIR",
+        "REVIEW",
+        "REWRITE_MODULE",
+        "REWRITE_CASE",
+        "REPLACE_CASE",
+        "FAIL_DAILY",
+        "PUBLISH_BLOCK",
+        "USER_REVIEW_REQUIRED"
+      ]
+    },
+    "publish_allowed": {
+      "type": "boolean"
+    },
+    "reviewer_output_valid": {
+      "type": "boolean"
+    },
+    "repair_action": {
+      "type": "string"
+    },
+    "retry_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_retries_per_gate",
+        "current_retry_count",
+        "retry_allowed"
+      ],
+      "properties": {
+        "max_retries_per_gate": {
+          "const": 2
+        },
+        "current_retry_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "retry_allowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "content_repair_required": {
+      "type": "boolean"
+    },
+    "content_repair_target": {
+      "type": "string"
+    },
+    "system_repair_required": {
+      "type": "boolean"
+    },
+    "system_repair_target": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regression_sample_required": {
+      "type": "boolean"
+    },
+    "content_changed": {
+      "type": "boolean"
+    },
+    "html_stale": {
+      "type": "boolean"
+    },
+    "must_rerender_html": {
+      "type": "boolean"
+    },
+    "must_rerun_gates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "string"
+    },
+    "repair_notes": {
+      "type": "string"
+    }
+  }
+}

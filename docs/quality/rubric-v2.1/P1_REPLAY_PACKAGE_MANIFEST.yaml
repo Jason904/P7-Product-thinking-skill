@@ -1,0 +1,64 @@
+package_name: rubric-v2.1-p1-replay-package.zip
+rubric_version: "2.1"
+stage: P1 calibration replay
+created_at: "2026-06-28"
+test_command: "python3 -m unittest tests.test_rubric_v21_governance tests.test_rubric_v21_adversarial tests.test_rubric_v21_anchor_quality tests.test_rubric_v21_calibration_replay"
+test_result:
+  governance_tests: OK
+  adversarial_tests: OK
+  anchor_quality_tests: OK
+  calibration_replay_tests: OK
+  all_tests: "Ran 72 tests OK"
+
+included_paths:
+  rubric_dir: docs/quality/rubric-v2.1/
+  tests:
+    - tests/test_rubric_v21_governance.py
+    - tests/test_rubric_v21_adversarial.py
+    - tests/test_rubric_v21_anchor_quality.py
+    - tests/test_rubric_v21_calibration_replay.py
+  real_sources:
+    - outputs/daily-training/2026-06-25/training-v3.md
+    - outputs/daily-training/2026-06-25/training-v6-raw.md
+    - outputs/daily-training/2026-06-25/training-v6-reader.html
+    - outputs/daily-training/2026-06-26/training-v7-raw.md
+    - outputs/daily-training/2026-06-26/v6-v7-regression-audit.md
+  optional_sources_included:
+    - outputs/daily-training/2026-06-25/source-notes-v6.md
+    - outputs/daily-training/2026-06-25/training-v6-quality-report.md
+    - outputs/daily-training/2026-06-26/source-notes-v7.md
+    - outputs/daily-training/2026-06-26/quality-gate-hardening-report.md
+    - outputs/daily-training/2026-06-26/training-v7-reader.html
+  optional_sources_missing: []
+
+fixture_status:
+  v3_target:
+    type: real
+    expected: PASS
+  v6_target:
+    type: real
+    expected: PASS
+  v7_failure:
+    type: real
+    expected: FAIL_DAILY_OR_PUBLISH_BLOCK
+  empty_8q:
+    type: synthetic
+    synthetic_fixture: true
+    not_real_sample_replay: true
+  news_summary:
+    type: synthetic
+    synthetic_fixture: true
+    not_real_sample_replay: true
+  inflated_self_review:
+    type: synthetic
+    synthetic_fixture: true
+    not_real_sample_replay: true
+  human_preference:
+    type: synthetic
+    synthetic_fixture: true
+    not_real_sample_replay: true
+
+known_boundary:
+  - "Calibration replay validates governance payload behavior."
+  - "It does not prove automatic Markdown-to-reviewer-payload generation."
+  - "Next stage is semantic reviewer generation and full daily pipeline integration."

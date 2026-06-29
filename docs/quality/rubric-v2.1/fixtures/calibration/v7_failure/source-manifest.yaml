@@ -1,0 +1,24 @@
+sample_id: v7_failure
+sample_type: real
+synthetic_fixture: false
+not_real_sample_replay: false
+source_markdown: outputs/daily-training/2026-06-26/training-v7-raw.md
+source_html: outputs/daily-training/2026-06-26/training-v7-reader.html
+source_records:
+- outputs/daily-training/2026-06-26/source-notes-v7.md
+- outputs/daily-training/2026-06-26/v6-v7-regression-audit.md
+- outputs/daily-training/2026-06-26/quality-gate-hardening-report.md
+expected_decision:
+- FAIL_DAILY
+- PUBLISH_BLOCK
+expected_publish_allowed: false
+expected_failure_types:
+- EMPTY_8Q_REASONING
+- DISCONNECTED_8Q_CHAIN
+- BOILERPLATE_REASONING
+- CASE_DEPTH_IMBALANCE
+- REVIEW_EVIDENCE_INVALID
+expected_caps: {}
+created_from: Historical V7 regression artifact and regression audit.
+notes: Real failure sample; reviewer payload intentionally preserves the known V7
+  Case B 8Q regression as a validator-visible cap violation.

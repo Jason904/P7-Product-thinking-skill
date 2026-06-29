@@ -14,3 +14,17 @@ build/
 .worktrees/
 outputs/**/*.png
 outputs/playwright/
+
+# Release / external replay packages
+*.zip
+
+# Rubric v2.1 runtime replay outputs
+docs/quality/rubric-v2.1/generated-replay/*_live/
+docs/quality/rubric-v2.1/generated-replay/v7_failure_no_audit_live/
+docs/quality/rubric-v2.1/generated-replay/stability/
+docs/quality/rubric-v2.1/generated-replay/cross-samples/
+docs/quality/rubric-v2.1/generated-replay/p2b3-samples/
+docs/quality/rubric-v2.1/shadow-runs/
+
+# Temporary package extraction dirs
+rubric-v2.1-*-extract/
