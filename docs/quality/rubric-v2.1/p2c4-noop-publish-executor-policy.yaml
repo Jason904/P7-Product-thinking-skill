@@ -1,0 +1,36 @@
+stage: P2C-4
+policy_name: no-op publish executor final safety switch
+executor_type: noop_publish_executor
+dry_run: true
+noop: true
+publish_executed: false
+formal_publish_allowed: false
+public_site_updated: false
+user_notification_sent: false
+live_llm_review: false
+automatic_publishing: false
+requires_explicit_final_publish_command: true
+requires_final_human_publish_confirmation: true
+blocked_conditions:
+  - MANUAL_PUBLISH_REVIEW_PACKAGE_MISSING
+  - SOURCE_RELEASE_CANDIDATE_MANIFEST_MISSING
+  - SOURCE_HUMAN_CONFIRMATION_DECISION_MISSING
+  - MANUAL_PUBLISH_REVIEW_DECISION_MISSING
+  - FINAL_HUMAN_PUBLISH_CHECKLIST_MISSING
+  - MANUAL_PUBLISH_REVIEW_NOT_READY
+  - FINAL_HUMAN_PUBLISH_CONFIRMATION_NOT_REQUIRED
+  - FORMAL_PUBLISH_ALREADY_ALLOWED
+  - PUBLIC_SITE_ALREADY_UPDATED
+  - USER_NOTIFICATION_ALREADY_SENT
+  - LIVE_LLM_REVIEW_USED
+  - AUTOMATIC_PUBLISHING_ENABLED
+planned_actions:
+  - action: render_final_reader
+    side_effect: false
+    executed: false
+  - action: update_public_site
+    side_effect: true
+    executed: false
+  - action: send_user_notification
+    side_effect: true
+    executed: false
