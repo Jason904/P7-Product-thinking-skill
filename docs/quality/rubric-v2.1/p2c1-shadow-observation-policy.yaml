@@ -1,0 +1,33 @@
+stage: P2C-1
+policy_name: shadow-only observation ledger
+shadow_only: true
+not_formal_p2c: true
+formal_publish_allowed: false
+public_site_updated: false
+user_notification_sent: false
+live_llm_review: false
+human_confirmation_required: true
+observation_window:
+  required_days: 3
+required_artifacts:
+  - shadow-review-result.yaml
+  - reader.html
+  - source-notes.md
+  - reviewer-output.json
+blocked_decisions:
+  - REVIEW
+  - REWRITE_MODULE
+  - REWRITE_CASE
+  - FAIL_DAILY
+  - PUBLISH_BLOCK
+forbidden_flags:
+  - public_site_updated
+  - user_notification_sent
+  - live_llm_review
+promotion_gate:
+  eligible_for_p2c2_default: false
+  reason: Human confirmation is still required. Shadow PASS is not formal PASS.
+observation_statuses:
+  observation_ready: 3 days have shadow results and no forbidden flags, but P2C-2 remains blocked pending human confirmation.
+  observation_blocked: At least one day has REVIEW/FAIL, missing artifacts, forbidden flags, or invalid publish authority.
+  observation_incomplete: Fewer than the required 3 days were observed.
