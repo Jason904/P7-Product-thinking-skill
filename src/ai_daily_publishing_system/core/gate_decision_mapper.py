@@ -1,6 +1,6 @@
 """Pure gate-decision-to-transition mapping and explanation."""
 
-from typing import Final
+from typing import Final, Optional
 
 from ai_daily_publishing_system.core import gates
 from ai_daily_publishing_system.core import transition_guard
@@ -26,13 +26,13 @@ def _decision(
     gate_name: str,
     decision: str,
     from_state: str,
-    to_state: str | None,
+    to_state: Optional[str],
     allowed: bool,
     reason_code: str,
     reason: str,
     source: str,
-    mapping_ref: tuple[str, str] | None,
-    transition_guard_result: dict[str, object] | None,
+    mapping_ref: Optional[tuple[str, str]],
+    transition_guard_result: Optional[dict[str, object]],
     invariant_refs: tuple[str, ...],
 ) -> dict[str, object]:
     return {
