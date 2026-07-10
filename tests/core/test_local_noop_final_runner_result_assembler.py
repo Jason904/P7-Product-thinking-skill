@@ -784,14 +784,27 @@ def test_tuple_projection_is_fresh_at_every_nonempty_boundary():
         evidence_refs=evidence_refs,
         notes=evidence_notes,
     )
-    runner_evidence_items = tuple([candidate_evidence])
+    candidate_evidence_items = tuple([candidate_evidence])
+    expected_runner_evidence_items = tuple(
+        {
+            "runner_evidence_id": item["result_candidate_evidence_id"],
+            "runner_evidence_role": item["result_candidate_evidence_role"],
+            "artifact_ref": item["artifact_ref"],
+            "artifact_kind": item["artifact_kind"],
+            "evidence_status": item["evidence_status"],
+            "producer_ref": item["producer_ref"],
+            "evidence_refs": item["evidence_refs"],
+            "notes": item["notes"],
+        }
+        for item in candidate_evidence_items
+    )
     required_ids = tuple(["candidate-evidence-001"])
     blocking_ids = tuple(["candidate-evidence-001"])
     candidate_notes = tuple(["candidate-note", "candidate-note-detail"])
     candidate_source = tuple(["shared-source", "candidate-source"])
     contract_source = tuple(["contract-source", "shared-source"])
     candidate = _candidate(
-        result_candidate_evidence_items=runner_evidence_items,
+        result_candidate_evidence_items=candidate_evidence_items,
         required_result_candidate_evidence_ids=required_ids,
         blocking_result_candidate_evidence_ids=blocking_ids,
         source_of_truth=candidate_source,
@@ -826,13 +839,26 @@ def test_tuple_projection_is_fresh_at_every_nonempty_boundary():
     assert len(calls) == 1
     assert len(p2d35_results) == 1
     kwargs = calls[0]
-    assert kwargs["runner_evidence_items"] == runner_evidence_items
-    assert kwargs["runner_evidence_items"] is not runner_evidence_items
-    assert kwargs["runner_evidence_items"][0] is not candidate_evidence
-    assert kwargs["runner_evidence_items"][0]["evidence_refs"] == evidence_refs
-    assert kwargs["runner_evidence_items"][0]["evidence_refs"] is not evidence_refs
-    assert kwargs["runner_evidence_items"][0]["notes"] == evidence_notes
-    assert kwargs["runner_evidence_items"][0]["notes"] is not evidence_notes
+    projected_items = kwargs["runner_evidence_items"]
+    assert projected_items == expected_runner_evidence_items
+    assert projected_items is not candidate_evidence_items
+    for index, candidate_item in enumerate(candidate_evidence_items):
+        projected = projected_items[index]
+        assert projected["runner_evidence_id"] == (
+            candidate_item["result_candidate_evidence_id"]
+        )
+        assert projected["runner_evidence_role"] == (
+            candidate_item["result_candidate_evidence_role"]
+        )
+        assert projected["artifact_ref"] == candidate_item["artifact_ref"]
+        assert projected["artifact_kind"] == candidate_item["artifact_kind"]
+        assert projected["evidence_status"] == candidate_item["evidence_status"]
+        assert projected["producer_ref"] == candidate_item["producer_ref"]
+        assert projected["evidence_refs"] == candidate_item["evidence_refs"]
+        assert projected["notes"] == candidate_item["notes"]
+        assert projected is not candidate_item
+        assert projected["evidence_refs"] is not candidate_item["evidence_refs"]
+        assert projected["notes"] is not candidate_item["notes"]
     assert kwargs["required_runner_evidence_ids"] == required_ids
     assert kwargs["required_runner_evidence_ids"] is not required_ids
     assert kwargs["blocking_runner_evidence_ids"] == blocking_ids
@@ -850,7 +876,7 @@ def test_tuple_projection_is_fresh_at_every_nonempty_boundary():
     final_result = result["local_noop_runner_result"]
     assert final_result["runner_evidence_items"] == p2d35_final["runner_evidence_items"]
     assert final_result["runner_evidence_items"] is not p2d35_final["runner_evidence_items"]
-    assert final_result["runner_evidence_items"] is not runner_evidence_items
+    assert final_result["runner_evidence_items"] is not candidate_evidence_items
     assert final_result["runner_evidence_items"][0] is not p2d35_final["runner_evidence_items"][0]
     assert final_result["runner_evidence_items"][0] is not candidate_evidence
     assert final_result["runner_evidence_items"][0]["evidence_refs"] == p2d35_final["runner_evidence_items"][0]["evidence_refs"]
@@ -877,7 +903,7 @@ def test_tuple_projection_is_fresh_at_every_nonempty_boundary():
     assert result["source"]["source_of_truth"] is not final_result["source_of_truth"]
     assert candidate_evidence["evidence_refs"] == evidence_refs
     assert candidate_evidence["notes"] == evidence_notes
-    assert candidate["result_candidate_evidence_items"] == runner_evidence_items
+    assert candidate["result_candidate_evidence_items"] == candidate_evidence_items
     assert candidate["required_result_candidate_evidence_ids"] == required_ids
     assert candidate["blocking_result_candidate_evidence_ids"] == blocking_ids
     assert candidate["notes"] == candidate_notes
