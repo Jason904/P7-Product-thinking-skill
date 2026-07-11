@@ -152,6 +152,15 @@ EXPECTED_FORBIDDEN_EXACT_NAMES = (
     "full_object",
 )
 
+EXPECTED_FORBIDDEN_OUTPUT_KEY_COLLISION_PATHS = (
+    (
+        "version_provenance_assembled",
+        (
+            ("version_provenance_assembled",),
+        ),
+    ),
+)
+
 EXPECTED_FORBIDDEN_PREFIXES = (
     "should_",
     "raw_",
@@ -547,6 +556,25 @@ def _all_nested_keys(value):
             for nested in current:
                 stack.append(nested)
     return keys
+
+
+def _all_nested_key_paths(value):
+    key_paths = []
+    stack = [(value, ())]
+    while stack:
+        current, current_path = stack.pop()
+        if type(current) is dict:
+            children = []
+            for key, nested in current.items():
+                key_path = current_path + (key,)
+                key_paths.append(key_path)
+                children.append((nested, key_path))
+            for child in reversed(children):
+                stack.append(child)
+        elif type(current) in (list, tuple):
+            for index in range(len(current) - 1, -1, -1):
+                stack.append((current[index], current_path + (index,)))
+    return tuple(key_paths)
 
 
 def _all_scalar_strings(value):
@@ -1428,7 +1456,30 @@ def test_every_forbidden_exact_name_prefix_and_suffix_blocks_safely():
         assert result["reason_code"] == (
             "FORBIDDEN_FIELD_OR_NAMESPACE_PRESENT"
         )
-        assert forbidden_name not in _all_nested_keys(result)
+        assert tuple(result) == ROOT_KEYS
+        assert result["version_provenance_assembled"] is False
+        assert result["source"] == {
+            "assembly_scope": "run_version_provenance_in_memory_only",
+            "schema_version": "p2d45.run_version_provenance.v1",
+            "component_version_count": 0,
+        }
+        assert result["run_version_provenance"] == {}
+        expected_paths = next(
+            (
+                paths
+                for name, paths in (
+                    EXPECTED_FORBIDDEN_OUTPUT_KEY_COLLISION_PATHS
+                )
+                if name == forbidden_name
+            ),
+            (),
+        )
+        actual_paths = tuple(
+            path
+            for path in _all_nested_key_paths(result)
+            if path[-1] == forbidden_name
+        )
+        assert actual_paths == expected_paths
         assert "caller-secret" not in _all_scalar_strings(result)
 
     for forbidden_prefix in EXPECTED_FORBIDDEN_PREFIXES:
@@ -1445,6 +1496,20 @@ def test_every_forbidden_exact_name_prefix_and_suffix_blocks_safely():
         assert result["reason_code"] == (
             "FORBIDDEN_FIELD_OR_NAMESPACE_PRESENT"
         )
+        assert tuple(result) == ROOT_KEYS
+        assert result["version_provenance_assembled"] is False
+        assert result["source"] == {
+            "assembly_scope": "run_version_provenance_in_memory_only",
+            "schema_version": "p2d45.run_version_provenance.v1",
+            "component_version_count": 0,
+        }
+        assert result["run_version_provenance"] == {}
+        assert tuple(
+            path
+            for path in _all_nested_key_paths(result)
+            if path[-1] == forbidden_name
+        ) == ()
+        assert "prefix-secret" not in _all_scalar_strings(result)
 
     for forbidden_suffix in EXPECTED_FORBIDDEN_SUFFIXES:
         forbidden_name = "probe" + forbidden_suffix
@@ -1460,6 +1525,20 @@ def test_every_forbidden_exact_name_prefix_and_suffix_blocks_safely():
         assert result["reason_code"] == (
             "FORBIDDEN_FIELD_OR_NAMESPACE_PRESENT"
         )
+        assert tuple(result) == ROOT_KEYS
+        assert result["version_provenance_assembled"] is False
+        assert result["source"] == {
+            "assembly_scope": "run_version_provenance_in_memory_only",
+            "schema_version": "p2d45.run_version_provenance.v1",
+            "component_version_count": 0,
+        }
+        assert result["run_version_provenance"] == {}
+        assert tuple(
+            path
+            for path in _all_nested_key_paths(result)
+            if path[-1] == forbidden_name
+        ) == ()
+        assert "suffix-secret" not in _all_scalar_strings(result)
 
 
 def test_normalized_forbidden_variants_and_declared_wrong_paths_block():
